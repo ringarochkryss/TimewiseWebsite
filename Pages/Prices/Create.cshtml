@@ -1,0 +1,115 @@
+﻿@page
+@model Salto.Pages.Prices.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container-fluid text-center menugroup mb-3">
+    <div class="row">
+        <div class="col-3 col-md-2 d-flex center">
+            <a href="javascript:void(0);" onclick="goBack()"><span class=""><i class="fas fa-arrow-circle-left fa-3x aturq my-auto"></i></span></a>
+        </div>
+        <div class="col-6 col-md-8">
+            <h1 class="swe">Skapa</h1>
+            <h1 class="eng">Create</h1>
+            <h4 class="swe">Prisplan</h4>
+            <h4 class="eng">Price Plan</h4>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Prices.PricesNameSWE" class="control-label">Name SWE: Starter,Plus or Performing Arts</label>
+                <input asp-for="Prices.PricesNameSWE" class="form-control d-flex" />
+                <span asp-validation-for="Prices.PricesNameSWE" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-5">
+                <label asp-for="Prices.PricesNameENG" class="control-label"></label>
+                <input asp-for="Prices.PricesNameENG" class="form-control" />
+                <span asp-validation-for="Prices.PricesNameENG" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-5">
+                <label asp-for="Prices.PointsSWE" class="control-label"></label>
+                <input asp-for="Prices.PointsSWE" class="form-control" />
+                <span asp-validation-for="Prices.PointsSWE" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-5">
+                <label asp-for="Prices.PointsENG" class="control-label"></label>
+                <input asp-for="Prices.PointsENG" class="form-control" />
+                <span asp-validation-for="Prices.PointsENG" class="text-danger"></span>
+            </div>
+            <div class="form-group my-5">
+                <label asp-for="Prices.Price" class="control-label"></label>
+                <input asp-for="Prices.Price" class="form-control" />
+                <span asp-validation-for="Prices.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-5">
+                <label asp-for="Prices.QuitRuleSWE" class="control-label"></label>
+                <input asp-for="Prices.QuitRuleSWE" class="form-control" />
+                <span asp-validation-for="Prices.QuitRuleSWE" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-5">
+                <label asp-for="Prices.QuitRuleENG" class="control-label"></label>
+                <input asp-for="Prices.QuitRuleENG" class="form-control" />
+                <span asp-validation-for="Prices.QuitRuleENG" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-5">
+                <label asp-for="Prices.DescriptionTitleSWE" class="control-label"></label>
+                <input asp-for="Prices.DescriptionTitleSWE" class="form-control" />
+                <span asp-validation-for="Prices.DescriptionTitleSWE" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-5">
+                <label asp-for="Prices.DescriptionTitleENG" class="control-label"></label>
+                <input asp-for="Prices.DescriptionTitleENG" class="form-control" />
+                <span asp-validation-for="Prices.DescriptionTitleENG" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-5">
+                <label asp-for="Prices.DescriptionsSWE" class="control-label"></label>
+                <input asp-for="Prices.DescriptionsSWE" class="form-control" />
+                <span asp-validation-for="Prices.DescriptionsSWE" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-5">
+                <label asp-for="Prices.DescriptionsENG" class="control-label"></label>
+                <input asp-for="Prices.DescriptionsENG" class="form-control" />
+                <span asp-validation-for="Prices.DescriptionsENG" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input checkbox-1x " asp-for="Prices.ButtonBuyNow" /> @Html.DisplayNameFor(model => model.Prices.ButtonBuyNow)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input checkbox-1x " asp-for="Prices.ButtonTestForFree" /> @Html.DisplayNameFor(model => model.Prices.ButtonTestForFree)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input checkbox-1x " asp-for="Prices.ButtonContactUs" /> @Html.DisplayNameFor(model => model.Prices.ButtonContactUs)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Spara" class="btn btn-lg btn-dark btn-block mx-auto mb-2 swe" />
+                <input type="submit" value="Create" class="btn btn-lg btn-dark btn-block mx-auto mb-2 eng" />
+            </div>
+        </form>
+        <div>
+            <a asp-page="./Index" class="btn btn-lg btn-dark mx-auto mb-2 text-light swe" style="max-width:150px; background-color:#394360;">Tillbaka</a>
+            <a asp-page="./Index" class="btn btn-lg btn-dark mx-auto mb-2 eng" style="max-width:150px;">Back</a>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

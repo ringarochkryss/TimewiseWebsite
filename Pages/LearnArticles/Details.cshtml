@@ -1,0 +1,233 @@
+﻿@page
+@using Salto.Models
+@model Salto.Pages.Learn.DetailsModel
+
+@* @{
+    ViewData["Title"] = "Details";
+} *@
+
+<div class="text-center menugroup mx-0 mb-5 row">
+
+    <div class="col-3 col-md-2 d-flex">
+        <a href="javascript:void(0);" onclick="goBack()">
+            <span class="">
+                <i class="fas fa-arrow-circle-left fa-3x aturq my-auto"></i>
+            </span>
+        </a>
+    </div>
+
+    <div class="text-center col-6 col-md-8">
+        <h2 class="swe">@Html.DisplayFor(model => model.LearnArticle.Name)</h2>
+        <small>@Html.DisplayFor(model => model.LearnArticle.LearnTag.Name)</small>
+    </div>
+
+    <div class="col-3 col-md-2 text-right">
+        @if (Model.LearnArticle.Desktop)
+        {
+            <div class="noprint">
+                <span class="badge rounded-pill pricesDarkBackground d-inline" style="width: 80px;">Desktop</span>
+                <button class="menuitem menuitemSm alightgold d-inline" onclick="window.print()" style="border:none;"><i class="fas fa-print"></i></button>
+            </div>
+        }
+        else if (Model.LearnArticle.Web)
+        {
+            <div>
+                <span class="badge rounded-pill pricesDarkBackground d-inline swe" style="width: 80px;">Web</span>
+            </div>
+        }
+    </div>
+
+</div>
+
+@* STEP CONTAINERS *@
+
+@* Step 1 *@
+@if (!string.IsNullOrEmpty(Model.LearnArticle.Heading1) || !string.IsNullOrEmpty(Model.LearnArticle.Text1) || Model.LearnArticle.Image1 != null)
+{
+    <div class="text-center menugroup mx-0 my-5 row">
+        <div class="col-1">
+            <a href="">
+                <span>
+                    <i class="fas fa-1 fa-3x menuiconcolorOne my-auto"></i>
+                </span>
+            </a>
+        </div>
+        <div class="col-8 col-md-6">
+            <h5>@Html.DisplayFor(model => model.LearnArticle.Heading1)</h5>
+            <p>@Html.DisplayFor(model => model.LearnArticle.Text1)</p>
+        </div>
+        <div class="col-12 col-md-5">
+            @if (Model.LearnArticle.Image1 != null)
+            {
+                <img src="data:image;base64,@System.Convert.ToBase64String(Model.LearnArticle.Image1)" 
+                     style="max-width: 100%; cursor: pointer;" 
+                     alt="Article Image" 
+                     onclick="showImageModal('@System.Convert.ToBase64String(Model.LearnArticle.Image1)')"/>
+            }
+            else
+            {
+                <i class="fas fa-image fa-3x agrey"></i>
+            }
+        </div>
+    </div>
+}
+
+@* Step 2 *@
+@if (!string.IsNullOrEmpty(Model.LearnArticle.Heading2) || !string.IsNullOrEmpty(Model.LearnArticle.Text2) || Model.LearnArticle.Image2 != null)
+{
+    <div class="text-center menugroup mx-0 my-5 row">
+        <div class="col-1">
+            <a href="">
+                <span>
+                    <i class="fas fa-2 fa-3x menuiconcolorOne my-auto"></i>
+                </span>
+            </a>
+        </div>
+        <div class="col-8 col-md-6">
+            <h5>@Html.DisplayFor(model => model.LearnArticle.Heading2)</h5>
+            <p>@Html.DisplayFor(model => model.LearnArticle.Text2)</p>
+        </div>
+        <div class="col-12 col-md-5">
+            @if (Model.LearnArticle.Image2 != null)
+            {
+                <img src="data:image;base64,@System.Convert.ToBase64String(Model.LearnArticle.Image2)" 
+                     style="max-width: 100%; cursor: pointer;" 
+                     alt="Article Image" 
+                     onclick="showImageModal('@System.Convert.ToBase64String(Model.LearnArticle.Image2)')"/>
+            }
+            else
+            {
+                <i class="fas fa-image fa-3x agrey"></i>
+            }
+        </div>
+    </div>
+}
+
+@* Step 3 *@
+@if (!string.IsNullOrEmpty(Model.LearnArticle.Heading3) || !string.IsNullOrEmpty(Model.LearnArticle.Text3) || Model.LearnArticle.Image3 != null)
+{
+    <div class="text-center menugroup mx-0 my-5 row">
+        <div class="col-1">
+            <a href="">
+                <span>
+                    <i class="fas fa-3 fa-3x menuiconcolorOne my-auto"></i>
+                </span>
+            </a>
+        </div>
+        <div class="col-8 col-md-6">
+            <h5>@Html.DisplayFor(model => model.LearnArticle.Heading3)</h5>
+            <p>@Html.DisplayFor(model => model.LearnArticle.Text3)</p>
+        </div>
+        <div class="col-12 col-md-5">
+            @if (Model.LearnArticle.Image3 != null)
+            {
+                <img src="data:image;base64,@System.Convert.ToBase64String(Model.LearnArticle.Image3)" 
+                     style="max-width: 100%; cursor: pointer;" 
+                     alt="Article Image" 
+                     onclick="showImageModal('@System.Convert.ToBase64String(Model.LearnArticle.Image3)')"/>
+            }
+            else
+            {
+                <i class="fas fa-image fa-3x agrey"></i>
+            }
+        </div>
+    </div>
+}
+
+@* Step 4 *@
+@if (!string.IsNullOrEmpty(Model.LearnArticle.Heading4) || !string.IsNullOrEmpty(Model.LearnArticle.Text4) || Model.LearnArticle.Image4 != null)
+{
+    <div class="text-center menugroup mx-0 my-5 row">
+        <div class="col-1">
+            <a href="">
+                <span>
+                    <i class="fas fa-4 fa-3x menuiconcolorOne my-auto"></i>
+                </span>
+            </a>
+        </div>
+        <div class="col-8 col-md-6">
+            <h5>@Html.DisplayFor(model => model.LearnArticle.Heading4)</h5>
+            <p>@Html.DisplayFor(model => model.LearnArticle.Text4)</p>
+        </div>
+        <div class="col-12 col-md-5">
+            @if (Model.LearnArticle.Image4 != null)
+            {
+                <img src="data:image;base64,@System.Convert.ToBase64String(Model.LearnArticle.Image4)" 
+                     style="max-width: 100%; cursor: pointer;" 
+                     alt="Article Image" 
+                     onclick="showImageModal('@System.Convert.ToBase64String(Model.LearnArticle.Image4)')"/>
+            }
+            else
+            {
+                <i class="fas fa-image fa-3x agrey"></i>
+            }
+        </div>
+    </div>
+}
+
+@* Step 5 *@
+@if (!string.IsNullOrEmpty(Model.LearnArticle.Heading5) || !string.IsNullOrEmpty(Model.LearnArticle.Text5) || Model.LearnArticle.Image5 != null)
+{
+    <div class="text-center menugroup mx-0 my-5 row">
+        <div class="col-1">
+            <a href="">
+                <span>
+                    <i class="fas fa-5 fa-3x menuiconcolorOne my-auto"></i>
+                </span>
+            </a>
+        </div>
+        <div class="col-8 col-md-6">
+            <h5>@Html.DisplayFor(model => model.LearnArticle.Heading5)</h5>
+            <p>@Html.DisplayFor(model => model.LearnArticle.Text5)</p>
+        </div>
+        <div class="col-12 col-md-5">
+            @if (Model.LearnArticle.Image5 != null)
+            {
+                <img src="data:image;base64,@System.Convert.ToBase64String(Model.LearnArticle.Image5)" 
+                     style="max-width: 100%; cursor: pointer;" 
+                     alt="Article Image" 
+                     onclick="showImageModal('@System.Convert.ToBase64String(Model.LearnArticle.Image5)')"/>
+            }
+            else
+            {
+                <i class="fas fa-image fa-3x agrey"></i>
+            }
+        </div>
+    </div>
+}
+
+
+    <div class="text-center menugroup mx-0 noprint">
+        <iframe width="1200" height="675" 
+        src="@Html.DisplayFor(model => model.LearnArticle.Url)">
+        </iframe>
+    </div>
+    
+     @*    </div>
+    <div>
+</div> *@
+
+@* Modal for displaying images *@
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">Image Preview</h5>
+                <button type="button" class="btn alightgold" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="modalImage" src="" alt="Image" style="max-width: 100%;" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+        <script type="text/javascript">
+            function showImageModal(imageData) {
+                var modalImage = document.getElementById('modalImage');
+                modalImage.src = 'data:image;base64,' + imageData;
+                $('#imageModal').modal('show');
+            }
+        </script>
+}

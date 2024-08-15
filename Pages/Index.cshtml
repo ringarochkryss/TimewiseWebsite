@@ -1,0 +1,183 @@
+﻿@page
+@model IndexModel
+
+@* {
+    ViewData["Title"] = "Home page";
+} *@
+
+<div class='container-fluid'>
+
+    <section class="row text-center">
+        @* {/*Hero Container*/} *@
+        <div class="text-center container-fluid hero col-12">
+            <div class="row">
+               
+                @* Admin Left *@
+                <div class="col-2 col-xl">
+                   
+                    @if (User.IsInRole("twAdmin")) 
+                    { 
+
+                        <nav class="navbar navbar-dark text-center">
+                            <ul class="navbar-nav mx-auto my-auto">
+                                <li class="center d-flex mx-3">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/Articles/Index"><div class="text-center"><i class="fas fa-quote-left editpricesDarkColor"></i></div><small class="smallxs swe">Artiklar</small><small class="smallxs eng">Blog</small></a>
+                                </li>
+                                <li class="center d-flex mx-3">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/Tags/Index"><div class="text-center"><i class="fas fa-tags editpricesDarkColor"></i></div><small class="smallxs swe">Taggar</small><small class="smallxs eng">Tags</small></a>
+                                </li>
+                                <li class="center d-flex mx-3">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/Prices/Index"><div class="text-center"><i class="fa-solid fa-magnifying-glass-chart editpricesDarkColor"></i></div><small class="smallxs swe">Priser</small><small class="smallxs eng">Pricing</small></a>
+                                </li>
+                                <li class="center d-flex mx-3">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/Contact/Index"><div class="text-center"><i class="fas fa-at editpricesDarkColor"></i></div><small class="smallxs swe">Kontakt</small><small class="smallxs eng">Contact</small></a>
+                                </li>
+                            </ul>
+                        </nav>
+                     }  
+
+                </div>
+              @*   Hero Content *@
+                <div class="col-8 col-xl-10">
+                 @*    Take control of your productions and teams *@
+                    <h1 class="mt-5">Planning software for teams, <br /> productions and performing arts</h1>
+                  @*   A planning software for effortless management *@
+                    <h4 class="my-5 font-style-italic">Coordinate everybody everywhere with Timewise</h4>
+                    <a asp-page="/Contact/Create" class="btn btn-lg btn-dark btn-dark-hollow mb-5">Get Started</a>
+                </div>
+               
+                @* Admin Right *@
+                <div class="col-2 col-xl-1">
+                    
+                    @if (User.IsInRole("twAdmin"))
+                    { 
+
+                        <nav class="navbar navbar-dark text-center">
+                            <ul class="navbar-nav mx-auto my-auto">
+                                <li class="center d-flex mx-3">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/RoleUserAdmin/Index"><div class="text-center"><i class="fas fa-user editpricesDarkColor"></i></div><small class="smallxs swe">Anv. & Roller</small><small class="smallxs eng">Users & Roles</small></a>
+                                </li>
+                                     <li class="center d-flex mx-3">
+                                        <a class="nav-link text-dark" asp-area="" asp-page="/LearnArticles/Index"><div class="text-center"><i class="fas fa-person-chalkboard editpricesDarkColor"></i></div><small class="smallxs swe">Learn Artiklar</small><small class="smallxs eng">Learn Articles</small></a>
+                                    </li>
+                                <li class="center d-flex mx-3">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/LearnTags/Index"><div class="text-center"><i class="fas fa-tags editpricesDarkColor"></i></div><small class="smallxs swe">Learn Kategorier</small><small class="smallxs eng">Learn Categories</small></a>
+                                </li>
+                               
+                            </ul>
+                        </nav>
+                    } 
+                </div>
+            </div>
+        </div>
+
+        @* Articles *@
+        <div class="text-center container hero mt-5 col-12">
+            
+            <div class=row>
+
+                @*Featured Article *@
+
+                @if (Model.FeaturedArticle != null)
+                {
+                    <div class="col-md-4 p-4 pt-2">
+                        <p>@Model.FeaturedArticle.Tag</p>
+                        <div class="card text-center">
+                            @if (Model.FeaturedArticle.Image != null)
+                            {
+                                <img class="card-img-top p-5 maximageheight" src="data:@Model.FeaturedArticle.ImageMimeType;base64,@Convert.ToBase64String(Model.FeaturedArticle.Image)" alt="Featured Article Image" />
+                         }
+                            else
+                            {
+                                <img class="card-img-top p-5 maximageheight" src="~/Images/tom-pottiger-yxzl9lnxSNA-unsplash.jpg" alt="Timewise Image" />
+                            }
+                            <div class="card-body text-center">
+                                <h5 class="card-title swe">@Model.FeaturedArticle.ArticleTitleSWE</h5>
+                                <h5 class="card-title eng">@Model.FeaturedArticle.ArticleTitleENG</h5>
+
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-transparent text-truncate swe">@Model.FeaturedArticle.ArticleContentSWE</li>
+                                <li class="list-group-item bg-transparent text-truncate eng">@Model.FeaturedArticle.ArticleContentENG</li>
+                            </ul>
+                            <div class="card-body text-center mb-1">
+                                <a asp-page="./Articles/Details" asp-route-id="@Model.FeaturedArticle.ArticleID" class="btn btn-lg btn-dark-hollow mx-auto mb-2 swe" style="max-width:150px;">Läs mer</a>
+                                <a asp-page="./Articles/Details" asp-route-id="@Model.FeaturedArticle.ArticleID" class="btn btn-lg btn-dark-hollow mx-auto mb-2 eng" style="max-width:150px;">Read more...</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-4 p-4"><p class="swe">Ingen utvald artikel.</p><p class="eng">No featured article found.</p></div>
+                }
+
+
+                @* Timereport *@
+                <div class="col-md-4 p-4">
+                    <div class="card">
+                        <img class="card-img-top p-5 maximageheight" src="~/Images/timereporting.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title swe">Schema, Tidrapport, Attest</h5>
+                            <h5 class="card-title eng">Schedule, Timereporting, Attest</h5>
+                        </div>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item">Enkel export till ert Löneprogram!</li>
+                            <li class="list-group-item">Tidrapportera med ett klick!</li>
+                            <li class="list-group-item">...var du vill i mobilen!</li>
+                        </ul>
+                    </div>
+                </div>
+           
+                @* Producttions*@
+                <div class="col-md-4 p-4">
+                    <div class="card">
+                        <img class="card-img-top p-5 maximageheight" src="~/Images//production.jpg"  alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title swe">Timewise Produktion</h5>
+                            <h5 class="card-title eng">Timewise Production</h5>
+                        </div>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item">Planering</li>
+                            <li class="list-group-item">Bemanning</li>
+                            <li class="list-group-item">Rapporter, Repscheman, roll-listor</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+ 
+        @*Season Plan Display*@
+        <div class="col-12 col-md-8 offset-md-2 d-none d-md-block">
+            <article class="row mb-3 h-400">
+                <div class="col-md-6 text-center h-100 d-flex align-items-center">
+                    <div>
+                        <h3 class="d-block mb-4">Complex Planning made Simple</h3>
+                        <h4 class="">Use Timewise to plan, manage, track and communicate.</h4>
+                    </div>
+                </div>
+                <div class="col-md-6 my-md-5 zoom">
+                    <img class="h-300" src="~/Images/seasonplanLight.png" alt="planning tool in Timewise" />
+                </div>
+            </article>
+        </div>
+
+        @* {/*Demo Container*/} *@
+        <div class="text-center container-fluid hero mt-2 bg-lightGreyBlue">
+            <img class="h-300" src="~/Images/amIresponsivegreybg.png" alt="Timewise Responsive App" />
+        </div>
+            <h1 class="mt-5">Experience Our Top Features Live</h1>
+            <h4 class="my-5">Book your one-on-one demo and discuss your use case with our experts.</h4>
+             <a asp-page="/Contact/Create" class="btn btn-lg btn-dark btn-dark-hollow mb-5">Book a Demo</a>>
+    </section>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById('demoLink').addEventListener('click', function () {
+            var selectElement = document.getElementById('Contact_VersionDemoMeeting');
+            selectElement.value = 'Demo'; // Set the default value to 'Demo'
+        });
+    });
+</script>

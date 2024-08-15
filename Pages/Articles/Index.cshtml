@@ -1,0 +1,260 @@
+﻿@page
+@model Salto.Pages.Articles.IndexModel
+@using Salto.Models
+
+@{
+    ViewData["Title"] = "Articles";
+}
+
+<div class="text-center menugroup mx-0 mb-3">
+    <div class="row">
+        <div class="col-3 col-md-2 d-flex center">
+            <a href="javascript:void(0);" onclick="goBack()"><span class=""><i class="fas fa-arrow-circle-left fa-3x aturq my-auto"></i></span></a>
+        </div>
+        <div class="col-6 col-md-8">
+            <h1 class="swe">Blogg</h1>
+            <h1 class="eng">Blog</h1>
+            <h4 class="swe">& Artiklar</h4>
+            <h4 class="eng">& Articles</h4>
+        </div>
+        <div class="col-3 col-md-2 d-flex center">
+            <a asp-page="Create" class="btn btn-lg btn-dark btn-block mx-auto mb-2 swe">Skapa ny</a>
+            <a asp-page="Create" class="btn btn-lg btn-dark btn-block mx-auto mb-2 eng">Create New</a>
+        </div>
+    </div>
+</div>
+
+
+<form method="get" class="row g-3">
+    <div class="col-auto">
+        <label>Search:</label>
+        <input type="text" class="form-control" asp-for="SearchString" />
+    </div>
+    <div class="col-auto pt-4">
+        <button type="submit" class="btn mb-0 my-auto aturq text-light aturqBackground"><i class="fas fa-magnifying-glass"></i></button>
+    </div>
+</form>
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Articles.Items.First().Image)
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                    @Html.DisplayNameFor(model => model.Articles.Items.First().Date)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.ArticleTitleSWESort">
+                    @Html.DisplayNameFor(model => model.Articles.Items.First().ArticleTitleSWE)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Articles.Items.First().ArticleTitleENG)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Articles.Items.First().ArticleContentSWE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Articles.Items.First().ArticleContentENG)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Articles.Items.First().Tag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Articles.Items.First().Featured)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Articles.Items.First().Archived)
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.Articles.Items)
+        {
+            <tr>
+                <td>
+                    @if (item.Image != null)
+                    {
+                        <img src="data:image;base64,@System.Convert.ToBase64String(item.Image)" width="80" height="80" alt="@item.ImageAltText" />
+                    }
+                    else
+                    {
+                        <img src="~/Images/twicon_darkblue.png" width="80" height="80" alt="Timewise Image" />
+                    }
+                </td>
+                <td>
+                    @{
+                        DateTime? articleDate = item.Date;
+                        if (articleDate.HasValue)
+                        {
+                            @articleDate.Value.ToShortDateString()
+                        }
+                    }
+                </td>
+                <td>
+                    @{
+                        string articleTitleSWE = item.ArticleTitleSWE;
+                        if (!string.IsNullOrEmpty(articleTitleSWE) && articleTitleSWE.Length > 20)
+                        {
+                            articleTitleSWE = articleTitleSWE.Substring(0, 20) + "...";
+                        }
+                    }
+                    @articleTitleSWE
+                </td>
+                <td>
+                    @{
+                        string articleTitleENG = item.ArticleTitleENG;
+                        if (!string.IsNullOrEmpty(articleTitleENG) && articleTitleENG.Length > 20)
+                        {
+                            articleTitleENG = articleTitleENG.Substring(0, 20) + "...";
+                        }
+                    }
+                    @articleTitleENG
+                </td>
+                <td>
+                    @{
+                        string articleContentSWE = item.ArticleContentSWE;
+                        if (!string.IsNullOrEmpty(articleContentSWE) && articleContentSWE.Length > 20)
+                        {
+                            articleContentSWE = articleContentSWE.Substring(0, 20) + "...";
+                        }
+                    }
+                    @articleContentSWE
+                </td>
+                <td>
+                    @{
+                        string articleContentENG = item.ArticleContentENG;
+                        if (!string.IsNullOrEmpty(articleContentENG) && articleContentENG.Length > 20)
+                        {
+                            articleContentENG = articleContentENG.Substring(0, 20) + "...";
+                        }
+                    }
+                    @articleContentENG
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tag.TagNameSWE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Featured)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Archived)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ArticleID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ArticleID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ArticleID">Delete</a>
+                </td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+<div class="row">
+    <div class="col-sm-6">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                @if (Model.Articles.HasPreviousPage)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-page="./Index" asp-route-page="@(Model.Articles.PageIndex - 1)"
+                           asp-route-sortOrder="@Model.CurrentSort" asp-route-currentFilter="@Model.CurrentFilter">Previous</a>
+                    </li>
+                }
+                @for (var i = 1; i <= Model.Articles.TotalPages; i++)
+                {
+                    <li class="page-item @(i == Model.Articles.PageIndex + 1 ? "active" : "")">
+                        <a class="page-link" asp-page="./Index" asp-route-page="@i"
+                           asp-route-sortOrder="@Model.CurrentSort" asp-route-currentFilter="@Model.CurrentFilter">@i</a>
+                    </li>
+                }
+                @if (Model.Articles.HasNextPage)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-page="./Index" asp-route-page="@(Model.Articles.PageIndex + 1)"
+                           asp-route-sortOrder="@Model.CurrentSort" asp-route-currentFilter="@Model.CurrentFilter">Next</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+ @foreach (var item in Model.Articles.Items)
+{
+    
+    <div class="col-md-6 col-xl-4">
+        <div class="card text-center mt-3">
+              
+                <span class="badge badge-pill text-dark">
+                    @{
+                        DateTime? articleDate = item.Date;
+                        if (articleDate.HasValue)
+                        {
+                            @articleDate.Value.ToShortDateString()
+                        }
+                    }
+                </span>
+               
+                @if (item.Image != null)
+                {
+                    <img class="card-img-top p-5" src="data:image;base64,@System.Convert.ToBase64String(item.Image)" width="100%" alt="@item.ImageAltText" />
+                }
+                else
+                {
+                    <img class="card-img-top p-5" src="~/Images/tom-pottiger-yxzl9lnxSNA-unsplash.jpg" alt="Timewise Image" />
+                }
+
+                <div class="text-left">
+                    <div class="d-inline m-2 swe"><span class="badge rounded-pill pricesDarkBackground d-inline" width="80">@item.Tag.TagNameSWE</span></div>
+                    <div class="d-inline m-2 eng"><span class="badge rounded-pill pricesDarkBackground d-inline" width="80">@item.Tag.TagNameENG</span></div>
+
+                    @if (item.Featured)
+                    {
+                       <div class="d-inline m-2"> <span class="badge rounded-pill bg-danger d-inline">Featured</span></div>
+                    }
+                
+                    @if (item.Archived)
+                    {
+                        <div class="d-inline m-2"><span class="badge rounded-pill pricesDarkBackground d-inline">Archived</span></div>
+                    }
+
+                </div>
+            <div class="card-body text-center">
+                <h5 class="card-title swe">@item.ArticleTitleSWE</h5>
+                <h5 class="card-title eng">@item.ArticleTitleENG</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-transparent swe">@item.ArticleContentSWE</li>
+                <li class="list-group-item bg-transparent eng">@item.ArticleContentENG</li>
+
+            </ul>
+
+            <div class="card-body text-center">
+                <a asp-page="./Details" asp-route-id="@item.ArticleID" class="btn btn-lg btn-dark mx-auto mb-2 swe" style="max-width:150px;">Läs mer</a>
+                <a asp-page="./Details" asp-route-id="@item.ArticleID" class="btn btn-lg btn-dark mx-auto mb-2 eng" style="max-width:150px;">Read more...</a>
+                   
+                @*Admin box *@
+                    <div class="menugroup mx-auto d-flex editPricesButtonsBox">
+                        <div class="mb-3">
+                            <i class="fas fa-cog text-light fa-2xl"></i>
+                            <span class="text-light">ADMIN</span>
+                        </div>
+
+                        <a asp-page="./Edit" asp-route-id="@item.ArticleID" class="btn btn-lg btn-dark-hollow mx-auto text-light mb-2 swe" style="max-width:150px;">Redigera</a>
+                        <a asp-page="./Edit" asp-route-id="@item.ArticleID" class="btn btn-lg btn-dark-hollow mx-auto text-light mb-2 eng" style="max-width:150px;">Edit</a>
+
+                        <a asp-page="./Delete" asp-route-id="@item.ArticleID" class="btn btn-lg btn-dark-hollow mx-auto text-light mb-2 swe" style="max-width:150px;">Ta bort</a>
+                        <a asp-page="./Delete" asp-route-id="@item.ArticleID" class="btn btn-lg btn-dark-hollow mx-auto text-light mb-2 eng" style="max-width:150px;">Delete</a>
+                    </div>
+            </div>
+        </div>
+    </div>
+}
+</div>

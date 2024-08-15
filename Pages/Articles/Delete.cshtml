@@ -1,0 +1,68 @@
+﻿@page
+@model Salto.Pages.Articles.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="text-center menugroup mx-0 mb-3">
+    <div class="row">
+        <div class="col-3 col-md-2 d-flex center">
+            <a href="javascript:void(0);" onclick="goBack()"><span class=""><i class="fas fa-arrow-circle-left fa-3x aturq my-auto"></i></span></a>
+        </div>
+        <div class="col-6 col-md-8">
+            <h1 class="swe">Ta bort</h1>
+            <h1 class="eng">Delete</h1>
+            <h4 class="swe">Är du säker på att du vill ta bort?</h4>
+            <h4 class="eng">Are you sure you want to Delete?</h4>
+        </div>
+        <div class="col-3 col-md-2 d-flex center">
+            
+        </div>
+    </div>
+</div>
+
+    
+<div class="row">
+    <div class="col-md-6 mx-auto">
+    <hr />
+        <dl>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Article.Date)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Article.Date)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Article.ArticleTitleSWE)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Article.ArticleTitleSWE)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Article.ArticleTitleENG)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Article.ArticleTitleENG)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Article.ArticleContentSWE)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Article.ArticleContentSWE)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Article.Tag)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Article.Tag.TagNameSWE)
+            </dd>
+        </dl>
+        <hr />
+        <form method="post">
+            <input type="hidden" asp-for="Article.ArticleID" />
+            <input type="submit" value="Delete" class="btn btn-dark" />
+        </form>
+    </div>
+</div>
+

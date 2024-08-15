@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8" />
+    <meta name="Salto" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Timewise" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json" />
+
+    <title>@ViewData["Title"] - Salto</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Salto.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/font-awesome/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="~/css/font-awesome/css/fontawesome.css" />
+    <link rel="stylesheet" href="~/css/font-awesome/css/solid.min.css" />
+</head>
+<body>
+
+    <section class="mp-0 navbg">
+        <partial name="_LoginPartial" />
+
+        <div class="row mp-0">
+            <div class="col-3 d-none d-lg-block">
+                <a class="navbar-brand d-block mp-0 text-center" asp-page="/Index">
+                    <img src="~/Images/TimewiseLogoWhiteBG.png" height="60" />
+                    <small class="brandtext editpricesDarkColor">TIMEWISE</small>
+                </a>
+            </div>
+            <div class="col-12 mp-0 offset-md-3 col-md-6">
+                <nav class="navbar navbar-expand-lg navbar-dark px-3" id="headerNav">
+                    <div class="container-fluid mx-auto mr-20">
+                        <a class="navbar-brand d-md-none mp-0 text-center" asp-page="/Index">
+                            <img src="~/Images/TimewiseLogoWhiteBG.png" height="60" />
+                            <small class="editpricesDarkColor mr-20">TIMEWISE</small>
+                        </a>
+
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="" role="button"><i class="fa fa-bars editpricesDarkColor aactivegrey" aria-hidden="true"></i></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav justify-content-center w-100" id="Twnavbarul">
+                                <li class="center d-flex mx-3" id="homebutton">
+                                    <a class="nav-link text-dark text-center round-button" asp-area="" asp-page="/Index">
+                                        <div class="text-center py-auto mb-3 p-1"><i class="fas fa-hotel menuiconcolorOne fa-xl"></i></div>
+                                        <small class="smallxs swe mt-1">Hem</small>
+                                        <small class="smallxs eng mt-1">Home</small>
+                                    </a>
+                                </li>
+                                @if (User.IsInRole("twCustomer"))
+                                {
+                                    <li class="center d-flex mx-3">
+                                        <a class="nav-link text-dark text-center round-button" asp-area="" asp-page="/LearnArticles/Index">
+                                            <div class="text-center mb-3 p-1"><i class="fa-solid fas fa-graduation-cap menuiconcolorOne fa-xl"></i></div>
+                                            <small class="smallxs swe mt-1">Learn</small>
+                                            <small class="smallxs eng mt-1">Learn</small>
+                                        </a>
+                                    </li>
+                                }
+                                <li class="center d-flex mx-3">
+                                    <a class="nav-link text-dark text-center round-button" asp-area="" asp-page="/Prices/Index">
+                                        <div class="text-center mb-3 p-1"><i class="fa-solid fa-magnifying-glass-chart menuiconcolorOne fa-xl"></i></div>
+                                        <small class="smallxs swe mt-1">Priser</small>
+                                        <small class="smallxs eng mt-1">Pricing</small>
+                                    </a>
+                                </li>
+                                <li class="center d-flex mx-3">
+                                    <a class="nav-link text-dark text-center round-button" asp-area="" asp-page="/Contact/Create">
+                                        <div class="text-center mb-3 p-1"><i class="fas fa-at menuiconcolorOne fa-xl"></i></div>
+                                        <small class="smallxs swe mt-1">Kontakt</small>
+                                        <small class="smallxs eng mt-1">Contact</small>
+                                    </a>
+                                </li>
+                                <!-- Invoke the View Component here -->
+                                @await Component.InvokeAsync("Tags")
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <div class="container-fluid">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        // Get user's browser language
+        var browserLanguage = navigator.language.startsWith("sv") || navigator.language.startsWith("nb") || navigator.language.startsWith("nn") || navigator.language.startsWith("da")
+            ? "Swedish"
+            : "English";
+
+        console.log("Browser Language Detected: " + navigator.language);
+
+        // Get the language preference from localStorage, or use browser language as default
+        var storedLanguage = localStorage.getItem('language');
+        var currentLanguage = storedLanguage || browserLanguage;
+
+        console.log("Selected Language: " + currentLanguage);
+
+        document.getElementById('swedish-btn').addEventListener('click', function () {
+            setLanguage('Swedish');
+        });
+
+        document.getElementById('english-btn').addEventListener('click', function () {
+            setLanguage('English');
+        });
+
+        // Call setLanguage with the initial language to show/hide elements accordingly
+        setLanguage(currentLanguage);
+
+        function setLanguage(language) {
+            // Toggle visibility based on the selected language
+            var engElements = document.querySelectorAll('.eng');
+            var sweElements = document.querySelectorAll('.swe');
+
+            if (language === 'English') {
+                engElements.forEach(function (element) {
+                    element.style.display = 'block';
+                });
+                sweElements.forEach(function (element) {
+                    element.style.display = 'none';
+                });
+            } else if (language === 'Swedish') {
+                engElements.forEach(function (element) {
+                    element.style.display = 'none';
+                });
+                sweElements.forEach(function (element) {
+                    element.style.display = 'block';
+                });
+            }
+
+            // Store the selected language preference in localStorage
+            localStorage.setItem('language', language);
+        }
+
+        //Go back button
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

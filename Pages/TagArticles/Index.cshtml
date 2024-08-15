@@ -1,0 +1,87 @@
+﻿@page "{tagId:int}"
+@model Salto.Pages.TagArticles.IndexModel
+
+@{
+    ViewData["Title"] = "Blog";
+}
+
+<div class="row menugroup text-center">
+
+    <div class="col-3 col-md-2 d-flex center">
+        <a href="javascript:void(0);" onclick="goBack()"><span class=""><i class="fas fa-arrow-circle-left fa-3x aturq my-auto"></i></span></a>
+    </div>
+
+    @{
+        var firstArticle = Model.Articles.FirstOrDefault();
+    }
+
+    @if (firstArticle != null)
+    {
+        <div class="col-6 col-md-8">
+            <h1 class="swe">@firstArticle.Tag.TagNameSWE</h1>
+            <h1 class="eng">@firstArticle.Tag.TagNameENG</h1>
+        </div>
+    }
+</div>
+
+<div class="row">
+    @foreach (var article in Model.Articles)
+    {
+
+        <div class="col-md-6 col-xl-4">
+            <div class="card text-center mt-3">
+
+                <span class="badge badge-pill text-dark">
+                    @{
+                        DateTime? articleDate = @article.Date;
+                        if (articleDate.HasValue)
+                        {
+                            @articleDate.Value.ToShortDateString()
+                        }
+                    }
+                </span>
+
+                @if (@article.Image != null)
+                {
+@*                     <img class="card-img-top p-5" src="data:image;base64,@System.Convert.ToBase64String(@article.Image)" width="80" height="80" alt="@article.ImageAltText" />
+ *@                    <img class="card-img-top p-5 maximageheight" src="data:@article.ImageMimeType;base64,@Convert.ToBase64String(@article.Image)" alt=" Article Image Test" />
+
+                }
+                else
+                {
+                    <img class="card-img-top p-5" src="~/Images/tom-pottiger-yxzl9lnxSNA-unsplash.jpg" alt="Timewise Image" />
+                }
+
+                <div class="text-left">
+
+                    @if (@article.Featured)
+                    {
+                        <div class="d-inline m-2"> <span class="badge rounded-pill bg-danger d-inline">Featured</span></div>
+                    }
+
+                    @if (@article.Featured)
+                    {
+                        <div class="d-inline m-2"><span class="badge rounded-pill pricesDarkBackground d-inline">Archived</span></div>
+                    }
+
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title swe">@article.ArticleTitleSWE</h5>
+                    <h5 class="card-title eng">@article.ArticleTitleENG</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-transparent swe">@article.ArticleContentSWE</li>
+                    <li class="list-group-item bg-transparent eng">@article.ArticleContentENG</li>
+
+                </ul>
+
+                <div class="card-body text-center">
+                    <a asp-page="/Articles/Details" asp-route-id="@article.ArticleID" class="btn btn-lg btn-dark mx-auto mb-2 swe" style="max-width:150px;">Läs mer</a>
+                    <a asp-page="/Articles/Details" asp-route-id="@article.ArticleID" class="btn btn-lg btn-dark mx-auto mb-2 eng" style="max-width:150px;">Read more...</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+                   

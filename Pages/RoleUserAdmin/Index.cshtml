@@ -1,0 +1,97 @@
+﻿@page
+@model Salto.Pages.RoleUserAdmin.IndexModel
+
+@{
+    ViewData["Title"] = "Role and User Administration";
+}
+
+<div class="text-center menugroup mx-0 mb-3">
+    <div class="row">
+        <div class="col-3 col-md-2 d-flex center">
+            <a href="javascript:void(0);" onclick="goBack()"><span class=""><i class="fas fa-arrow-circle-left fa-3x aturq my-auto"></i></span></a>
+        </div>
+        <div class="col-6 col-md-8">
+            <h2 class="mt-3 swe">Roller och Användare</h2>
+            <h2 class="eng">@ViewData["Title"]</h2>
+        </div>
+        <div class="col-3 col-md-2 d-flex center">
+  
+        </div>
+    </div>
+</div>
+
+<div class="text-center menugroup mx-0 mb-3">
+<!-- Add Role Form -->
+<form method="post" asp-page="./CreateRole">
+    <!-- Your input fields for adding a role go here -->
+    <button type="submit" class="swe btn float-end zoom" style="border:transparent;"><i class="fas fa-circle-plus fa-3x aturq my-auto"></i></button>
+</form>
+<div class="text-center">
+<!-- Roles Table -->
+<h3 class="swe">Roller</h3>
+<h3 class="eng">Roles</h3>
+</div>
+<div class="col-md-6 mx-auto">
+<table class="table">
+    <thead>
+        <tr>
+            <th>Role Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model.Roles)
+        {
+            <tr>
+                <td>@role.Name</td>
+                <td><a asp-page="./EditRole"  asp-page-handler="EditRole" asp-route-id="@role.Id">Edit</a></td>
+                <td><a asp-page="./DeleteRole" asp-page-handler="DeleteRole" asp-route-id="@role.Id">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+</div>
+
+    <div class="text-center menugroup mx-0 mb-3">
+<div class="">
+<!-- Add User Form -->
+<form method="post" asp-page="./CreateUser">
+    <!-- Your input fields for adding a user go here -->
+        <button type="submit" class="swe btn float-end zoom" style="border:transparent;"><i class="fas fa-circle-plus fa-3x aturq my-auto"></i></button>
+</form>
+</div>
+<!-- Users Table -->
+<div class="text-center">
+<h3 class="swe">Användare</h3>
+<h3 class="eng">Users</h3>
+</div>
+<div class="col-md-8 mx-auto">
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            @*    <th>Phone Number</th> *@
+            <th>Roles</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                @*        <td>@user.PhoneNumber</td> *@
+                <td>@string.Join(", ", await Model.GetUserRoles(user.Id))</td>
+                <td><a asp-page="./EditUser" asp-route-userId="@user.Id">Edit</a></td>
+                <td><a asp-page="./DeleteUser" asp-route-userId="@user.Id">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+</div>

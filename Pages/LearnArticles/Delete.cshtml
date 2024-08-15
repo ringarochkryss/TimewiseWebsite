@@ -1,0 +1,148 @@
+﻿@page
+@model Salto.Pages.Learn.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>LearnArticle</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LearnArticle.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LearnArticle.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LearnArticle.Image1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LearnArticle.Image1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LearnArticle.Heading1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LearnArticle.Heading1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LearnArticle.Text1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LearnArticle.Text1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LearnArticle.Image2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LearnArticle.Image2)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LearnArticle.Heading2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LearnArticle.Heading2)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LearnArticle.Text2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LearnArticle.Text2)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LearnArticle.Image3)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LearnArticle.Image3)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LearnArticle.Heading3)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LearnArticle.Heading3)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LearnArticle.Text3)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LearnArticle.Text3)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LearnArticle.Image4)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LearnArticle.Image4)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LearnArticle.Heading4)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LearnArticle.Heading4)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LearnArticle.Text4)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LearnArticle.Text4)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LearnArticle.Image5)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LearnArticle.Image5)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LearnArticle.Heading5)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LearnArticle.Heading5)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LearnArticle.Text5)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LearnArticle.Text5)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LearnArticle.Url)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LearnArticle.Url)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LearnArticle.Icon)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LearnArticle.Icon)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LearnArticle.Desktop)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LearnArticle.Desktop)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LearnArticle.Web)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LearnArticle.Web)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LearnArticle.LearnTag)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LearnArticle.LearnTag.Id)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="LearnArticle.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

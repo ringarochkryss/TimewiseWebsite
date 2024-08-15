@@ -1,0 +1,100 @@
+﻿@page
+@model Salto.Pages.Articles.EditModel
+
+
+<div class="menugroup text-center">
+    <div class="row">
+        <div class="col-3 col-md-2 d-flex center">
+            <a href="javascript:void(0);" onclick="goBack()"><span class=""><i class="fas fa-arrow-circle-left fa-3x aturq my-auto"></i></span></a>
+        </div>
+        <div class="col-6 col-md-8">
+        <h1 class="swe">Redigera</h1>
+        <h1 class="eng">Edit</h1>
+        <h4 class="swe">Artikel</h4>
+        <h4 class="eng">Article</h4>
+        </div>
+        <div class="col-3 col-md-2 d-flex center">
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6 mx-auto">
+<form method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Article.ArticleID" />
+
+    <div class="form-group">
+        <label asp-for="Article.ArticleTitleSWE" class="control-label mt-5"></label>
+        <input asp-for="Article.ArticleTitleSWE" class="form-control" />
+        <span asp-validation-for="Article.ArticleTitleSWE" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Article.ArticleTitleENG" class="control-label mb-5"></label>
+        <input asp-for="Article.ArticleTitleENG" class="form-control" />
+        <span asp-validation-for="Article.ArticleTitleENG" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Article.Date" class="control-label my-5"></label>
+        <input asp-for="Article.Date" class="form-control" />
+        <span asp-validation-for="Article.Date" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Article.ArticleContentSWE" class="control-label mt-5"></label>
+        <textarea asp-for="Article.ArticleContentSWE" class="form-control"></textarea>
+        <span asp-validation-for="Article.ArticleContentSWE" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Article.ArticleContentENG" class="control-label mb-5"></label>
+        <textarea asp-for="Article.ArticleContentENG" class="form-control"></textarea>
+        <span asp-validation-for="Article.ArticleContentENG" class="text-danger"></span>
+    </div>
+
+    <div class="form-group form-check">
+        <label class="form-check-label">
+            <input class="form-check-input" asp-for="Article.Archived" /> @Html.DisplayNameFor(model => model.Article.Archived)
+        </label>
+    </div>
+    <div class="form-group form-check my-5">
+        <label class="form-check-label">
+            <input class="form-check-input" asp-for="Article.Featured" /> @Html.DisplayNameFor(model => model.Article.Featured)
+        </label>
+    </div>
+
+    <div class="form-group my-5">
+        <label asp-for="Article.TagID" class="control-label"></label>
+        <select asp-for="Article.TagID" asp-items="@Model.TagNameSWE" class="form-control"></select>
+        <span asp-validation-for="Article.TagID" class="text-danger"></span>
+    </div>
+
+    <div class="form-group my-5">
+        <label asp-for="Image" class="control-label"></label>
+        <input type="file" asp-for="Image" class="form-control" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Current Image:</label>
+        @if (Model.Article.Image != null)
+        {
+            <img src="data:@Model.Article.ImageMimeType;base64,@Convert.ToBase64String(Model.Article.Image)" class="img-thumbnail" />
+        }
+        else
+        {
+            <p>No image available.</p>
+        }
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Spara" class="btn btn-lg btn-dark btn-block mx-auto mb-2 swe" />
+        <input type="submit" value="Save" class="btn btn-lg btn-dark btn-block mx-auto mb-2 eng" />
+    </div>
+</form>
+<a asp-page="./Index" class="btn btn-lg btn-dark mx-auto mb-2 text-light swe" style="max-width:150px; background-color:#394360;">Tillbaka</a>
+<a asp-page="./Index" class="btn btn-lg btn-dark mx-auto mb-2 eng" style="max-width:150px;">Back</a>
+    </div>
+</div>

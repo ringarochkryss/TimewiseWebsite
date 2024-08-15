@@ -1,0 +1,35 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@* Languagepicker *@
+<div class="row mp-0 mx-2 noprint">
+    <div class="col-6 justify-content-start mp-0">
+        <button id="swedish-btn" class="languageBtn btn-inline"><img src="~/Images/swFlag.png" height="26px" alt="Swedish" /></button>
+        <button id="english-btn" class="languageBtn btn-inline"><img src="~/Images/ukFlag.png" height="26px" alt="English" /></button>
+    </div>
+    <div class="col-6 d-flex justify-content-end mp-0">
+@* Sign in *@
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="mp-0 text-right d-inline-flex float-right">
+                <a class="d-flex text-dark text-center mx-2" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i class="fas fa-user editpricesDarkColor center"></i><small class="smallxs p-1"> @User.Identity?.Name!</small></a>
+
+                <form class="d-flex" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                    <button type="submit" class="d-flex text-dark text-center mx-2 btn btn-link p-0">
+                        <i class="fas fa-sign-out editpricesDarkColor mt-1"></i><small class="smallxs p-1 swe">Logga ut</small><small class="smallxs p-1 eng">Log out</small>
+                    </button>
+                </form>
+    </div>
+}
+else
+{
+
+            <a class="d-flex text-dark text-center mx-2" asp-area="Identity" asp-page="/Account/Register"><i class="fas fa-user-edit editpricesDarkColor mt-1"></i><small class="smallxs eng p-1">Register</small><small class="smallxs swe p-1">Registrera</small></a>
+
+
+            <a class="d-flex text-dark text-center mx-2" asp-area="Identity" asp-page="/Account/Login"><i class="fas fa-sign-in editpricesDarkColor mt-1"></i><small class="smallxs eng p-1">Login</small><small class="smallxs swe p-1">Logga in</small></a>
+ 
+}
+</div>
+</div>

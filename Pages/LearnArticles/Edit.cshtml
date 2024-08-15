@@ -1,0 +1,227 @@
+﻿@page
+@model Salto.Pages.Learn.EditModel
+
+<div class="menugroup text-center">
+    <div class="row">
+        <div class="col-3 col-md-2 d-flex center">
+            <a href="javascript:void(0);" onclick="goBack()"><span class=""><i class="fas fa-arrow-circle-left fa-3x aturq my-auto"></i></span></a>
+        </div>
+        <div class="col-6 col-md-8">
+            <h1 class="swe">Redigera</h1>
+            <h1 class="eng">Edit</h1>
+            <h4 class="swe">Learn Article</h4>
+            <h4 class="eng">Learn Article</h4>
+        </div>
+        <div class="col-3 col-md-2 d-flex center"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6 mx-auto">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="LearnArticleViewModel.LearnArticle.Id" />
+
+            <!-- Name Field -->
+            <div class="form-group mb-5">
+                <label asp-for="LearnArticleViewModel.LearnArticle.Name" class="control-label"></label>
+                <input asp-for="LearnArticleViewModel.LearnArticle.Name" class="form-control" />
+                <span asp-validation-for="LearnArticleViewModel.LearnArticle.Name" class="text-danger"></span>
+            </div>
+
+            <!-- Heading 1 -->
+            <div class="form-group mb-5">
+                <label asp-for="LearnArticleViewModel.LearnArticle.Heading1" class="control-label"></label>
+                <input asp-for="LearnArticleViewModel.LearnArticle.Heading1" class="form-control" />
+                <span asp-validation-for="LearnArticleViewModel.LearnArticle.Heading1" class="text-danger"></span>
+            </div>
+
+            <!-- Text 1 -->
+            <div class="form-group mb-5">
+                <label asp-for="LearnArticleViewModel.LearnArticle.Text1" class="control-label"></label>
+                <input asp-for="LearnArticleViewModel.LearnArticle.Text1" class="form-control" />
+                <span asp-validation-for="LearnArticleViewModel.LearnArticle.Text1" class="text-danger"></span>
+            </div>
+
+            <!-- Image 1 -->
+            <div class="form-group mb-5">
+                <label asp-for="LearnArticleViewModel.Image1" class="control-label">Image 1</label>
+                @if (Model.LearnArticleViewModel.LearnArticle.Image1 != null)
+                {
+                    <img class="card-img-top p-3" src="data:image;base64,@(Convert.ToBase64String(Model.LearnArticleViewModel.LearnArticle.Image1))" width="100" height="100" alt="Image 1" />
+                }
+                else
+                {
+                    <p>No image available</p>
+                }
+                <input type="file" asp-for="LearnArticleViewModel.Image1" class="form-control" />
+                <span asp-validation-for="LearnArticleViewModel.Image1" class="text-danger"></span>
+            </div>
+
+            <!-- Heading 2 -->
+            <div class="form-group mb-5">
+                <label asp-for="LearnArticleViewModel.LearnArticle.Heading2" class="control-label"></label>
+                <input asp-for="LearnArticleViewModel.LearnArticle.Heading2" class="form-control" />
+                <span asp-validation-for="LearnArticleViewModel.LearnArticle.Heading2" class="text-danger"></span>
+            </div>
+
+            <!-- Text 2 -->
+            <div class="form-group mb-5">
+                <label asp-for="LearnArticleViewModel.LearnArticle.Text2" class="control-label"></label>
+                <input asp-for="LearnArticleViewModel.LearnArticle.Text2" class="form-control" />
+                <span asp-validation-for="LearnArticleViewModel.LearnArticle.Text2" class="text-danger"></span>
+            </div>
+
+            <!-- Image 2 -->
+            <div class="form-group mb-5">
+                <label asp-for="LearnArticleViewModel.Image2" class="control-label">Image 2</label>
+                @if (Model.LearnArticleViewModel.LearnArticle.Image2 != null)
+                {
+                    <img class="card-img-top p-3" src="data:image;base64,@(Convert.ToBase64String(Model.LearnArticleViewModel.LearnArticle.Image2))" width="100" height="100" alt="Image 2" />
+                }
+                else
+                {
+                    <p>No image available</p>
+                }
+                <input type="file" asp-for="LearnArticleViewModel.Image2" class="form-control" />
+                <span asp-validation-for="LearnArticleViewModel.Image2" class="text-danger"></span>
+            </div>
+
+            <!-- Heading 3 -->
+            <div class="form-group mb-5">
+                <label asp-for="LearnArticleViewModel.LearnArticle.Heading3" class="control-label"></label>
+                <input asp-for="LearnArticleViewModel.LearnArticle.Heading3" class="form-control" />
+                <span asp-validation-for="LearnArticleViewModel.LearnArticle.Heading3" class="text-danger"></span>
+            </div>
+
+            <!-- Text 3 -->
+            <div class="form-group mb-5">
+                <label asp-for="LearnArticleViewModel.LearnArticle.Text3" class="control-label"></label>
+                <input asp-for="LearnArticleViewModel.LearnArticle.Text3" class="form-control" />
+                <span asp-validation-for="LearnArticleViewModel.LearnArticle.Text3" class="text-danger"></span>
+            </div>
+
+            <!-- Image 3 -->
+            <div class="form-group mb-5">
+                <label asp-for="LearnArticleViewModel.Image3" class="control-label">Image 3</label>
+                @if (Model.LearnArticleViewModel.LearnArticle.Image3 != null)
+                {
+                    <img class="card-img-top p-3" src="data:image;base64,@(Convert.ToBase64String(Model.LearnArticleViewModel.LearnArticle.Image3))" width="100" height="100" alt="Image 3" />
+                }
+                else
+                {
+                    <p>No image available</p>
+                }
+                <input type="file" asp-for="LearnArticleViewModel.Image3" class="form-control" />
+                <span asp-validation-for="LearnArticleViewModel.Image3" class="text-danger"></span>
+            </div>
+
+            <!-- Heading 4 -->
+            <div class="form-group mb-5">
+                <label asp-for="LearnArticleViewModel.LearnArticle.Heading4" class="control-label"></label>
+                <input asp-for="LearnArticleViewModel.LearnArticle.Heading4" class="form-control" />
+                <span asp-validation-for="LearnArticleViewModel.LearnArticle.Heading4" class="text-danger"></span>
+            </div>
+
+            <!-- Text 4 -->
+            <div class="form-group mb-5">
+                <label asp-for="LearnArticleViewModel.LearnArticle.Text4" class="control-label"></label>
+                <input asp-for="LearnArticleViewModel.LearnArticle.Text4" class="form-control" />
+                <span asp-validation-for="LearnArticleViewModel.LearnArticle.Text4" class="text-danger"></span>
+            </div>
+
+            <!-- Image 4 -->
+            <div class="form-group mb-5">
+                <label asp-for="LearnArticleViewModel.Image4" class="control-label">Image 4</label>
+                @if (Model.LearnArticleViewModel.LearnArticle.Image4 != null)
+                {
+                    <img class="card-img-top p-3" src="data:image;base64,@(Convert.ToBase64String(Model.LearnArticleViewModel.LearnArticle.Image4))" width="100" height="100" alt="Image 4" />
+                }
+                else
+                {
+                    <p>No image available</p>
+                }
+                <input type="file" asp-for="LearnArticleViewModel.Image4" class="form-control" />
+                <span asp-validation-for="LearnArticleViewModel.Image4" class="text-danger"></span>
+            </div>
+
+            <!-- Heading 5 -->
+            <div class="form-group mb-5">
+                <label asp-for="LearnArticleViewModel.LearnArticle.Heading5" class="control-label"></label>
+                <input asp-for="LearnArticleViewModel.LearnArticle.Heading5" class="form-control" />
+                <span asp-validation-for="LearnArticleViewModel.LearnArticle.Heading5" class="text-danger"></span>
+            </div>
+
+            <!-- Text 5 -->
+            <div class="form-group mb-5">
+                <label asp-for="LearnArticleViewModel.LearnArticle.Text5" class="control-label"></label>
+                <input asp-for="LearnArticleViewModel.LearnArticle.Text5" class="form-control" />
+                <span asp-validation-for="LearnArticleViewModel.LearnArticle.Text5" class="text-danger"></span>
+            </div>
+
+            <!-- Image 5 -->
+            <div class="form-group mb-5">
+                <label asp-for="LearnArticleViewModel.Image5" class="control-label">Image 5</label>
+                @if (Model.LearnArticleViewModel.LearnArticle.Image5 != null)
+                {
+                    <img class="card-img-top p-3" src="data:image;base64,@(Convert.ToBase64String(Model.LearnArticleViewModel.LearnArticle.Image5))" width="100" height="100" alt="Image 5" />
+                }
+                else
+                {
+                    <p>No image available</p>
+                }
+                <input type="file" asp-for="LearnArticleViewModel.Image5" class="form-control" />
+                <span asp-validation-for="LearnArticleViewModel.Image5" class="text-danger"></span>
+            </div>
+
+            <!-- URL Field -->
+            <div class="form-group mb-5">
+                <label asp-for="LearnArticleViewModel.LearnArticle.Url" class="control-label"></label>
+                <input asp-for="LearnArticleViewModel.LearnArticle.Url" class="form-control" />
+                <span asp-validation-for="LearnArticleViewModel.LearnArticle.Url" class="text-danger"></span>
+            </div>
+
+            <!-- Icon Field -->
+            <div class="form-group mb-5">
+                <label asp-for="LearnArticleViewModel.LearnArticle.Icon" class="control-label"></label>
+                <input asp-for="LearnArticleViewModel.LearnArticle.Icon" class="form-control" />
+                <span asp-validation-for="LearnArticleViewModel.LearnArticle.Icon" class="text-danger"></span>
+            </div>
+
+            <!-- Desktop Checkbox -->
+            <div class="form-group mb-5">
+                <div class="form-check">
+                    <input asp-for="LearnArticleViewModel.LearnArticle.Desktop" class="form-check-input" />
+                    <label asp-for="LearnArticleViewModel.LearnArticle.Desktop" class="form-check-label"></label>
+                </div>
+            </div>
+
+            <!-- Web Checkbox -->
+            <div class="form-group mb-5">
+                <div class="form-check">
+                    <input asp-for="LearnArticleViewModel.LearnArticle.Web" class="form-check-input" />
+                    <label asp-for="LearnArticleViewModel.LearnArticle.Web" class="form-check-label"></label>
+                </div>
+            </div>
+
+            <!-- Tags Selection -->
+            <div class="form-group mb-5">
+                <label asp-for="LearnArticleViewModel.LearnArticle.LearnTagId" class="control-label"></label>
+                <select asp-for="LearnArticleViewModel.LearnArticle.LearnTagId"
+                        asp-items="@(Model.LearnArticleViewModel.TagList ?? new List<SelectListItem>())"
+                        class="form-control">
+                </select>
+                <span asp-validation-for="LearnArticleViewModel.LearnArticle.LearnTagId" class="text-danger"></span>
+            </div>
+
+            <!-- Submit Buttons -->
+            <div class="form-group">
+                <input type="submit" value="Spara" class="btn btn-lg btn-dark btn-block mx-auto mb-2 swe" />
+                <input type="submit" value="Save" class="btn btn-lg btn-dark btn-block mx-auto mb-2 eng" />
+            </div>
+        </form>
+
+        <a asp-page="./Index" class="btn btn-lg btn-dark mx-auto mb-2 text-light swe" style="max-width:150px; background-color:#394360;">Tillbaka</a>
+        <a asp-page="./Index" class="btn btn-lg btn-dark mx-auto mb-2 eng" style="max-width:150px;">Back</a>
+    </div>
+</div>

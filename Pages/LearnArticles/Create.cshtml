@@ -1,0 +1,198 @@
+﻿@page
+@model Salto.Pages.Learn.CreateModel
+
+<div class="text-center menugroup mx-0 mb-3">
+    <div class="row">
+        <div class="col-3 col-md-2 d-flex center">
+            <a href="javascript:void(0);" onclick="goBack()"><span class=""><i class="fas fa-arrow-circle-left fa-3x aturq my-auto"></i></span></a>
+        </div>
+        <div class="col-6 col-md-8">
+            
+            @if (User.IsInRole("twAdmin")) 
+                    {
+            <h1 class="swe">Lägg till</h1>
+            <h1 class="eng">Add</h1>
+            <h4 class="swe">Instruktion</h4>
+            <h4 class="eng">Instruction</h4>
+            }
+            else
+            {
+            <h1 class="swe">Önska</h1>
+            <h1 class="eng">Ask for</h1>
+            <h4 class="swe">Instruktion</h4>
+            <h4 class="eng">Instruction</h4>
+            }
+        </div>
+        <div class="col-3 col-md-2 d-flex center">
+           
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Name Field -->
+            <div class="form-group mb-5">
+                <label asp-for="CreateLearnArticleViewModel.LearnArticle.Name" class="control-label">Fråga eller Rubrik</label>
+                <input asp-for="CreateLearnArticleViewModel.LearnArticle.Name" class="form-control" />
+                <span asp-validation-for="CreateLearnArticleViewModel.LearnArticle.Name" class="text-danger"></span>
+            </div>
+
+            @if (User.IsInRole("twAdmin")) 
+                    {
+            <!-- Instruction 1 -->
+            <div class="form-group mt-5">
+                <label asp-for="CreateLearnArticleViewModel.LearnArticle.Heading1" class="control-label"></label>
+                <input asp-for="CreateLearnArticleViewModel.LearnArticle.Heading1" class="form-control" />
+                <span asp-validation-for="CreateLearnArticleViewModel.LearnArticle.Heading1" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CreateLearnArticleViewModel.LearnArticle.Text1" class="control-label"></label>
+                <input asp-for="CreateLearnArticleViewModel.LearnArticle.Text1" class="form-control" />
+                <span asp-validation-for="CreateLearnArticleViewModel.LearnArticle.Text1" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-5">
+                <label asp-for="CreateLearnArticleViewModel.Image1" class="control-label">Image 1</label>
+                <input type="file" asp-for="CreateLearnArticleViewModel.Image1" class="form-control" />
+                <span asp-validation-for="CreateLearnArticleViewModel.Image1" class="text-danger"></span>
+            </div>
+
+            <!-- Instruction 2 -->
+            <div class="form-group mt-5">
+                <label asp-for="CreateLearnArticleViewModel.LearnArticle.Heading2" class="control-label"></label>
+                <input asp-for="CreateLearnArticleViewModel.LearnArticle.Heading2" class="form-control" />
+                <span asp-validation-for="CreateLearnArticleViewModel.LearnArticle.Heading2" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CreateLearnArticleViewModel.LearnArticle.Text2" class="control-label"></label>
+                <input asp-for="CreateLearnArticleViewModel.LearnArticle.Text2" class="form-control" />
+                <span asp-validation-for="CreateLearnArticleViewModel.LearnArticle.Text2" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-5">
+                <label asp-for="CreateLearnArticleViewModel.Image2" class="control-label">Image 2</label>
+                <input type="file" asp-for="CreateLearnArticleViewModel.Image2" class="form-control" />
+                <span asp-validation-for="CreateLearnArticleViewModel.Image2" class="text-danger"></span>
+            </div>
+
+            <!-- Instruction 3 -->
+            <div class="form-group mt-5">
+                <label asp-for="CreateLearnArticleViewModel.LearnArticle.Heading3" class="control-label"></label>
+                <input asp-for="CreateLearnArticleViewModel.LearnArticle.Heading3" class="form-control" />
+                <span asp-validation-for="CreateLearnArticleViewModel.LearnArticle.Heading3" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CreateLearnArticleViewModel.LearnArticle.Text3" class="control-label"></label>
+                <input asp-for="CreateLearnArticleViewModel.LearnArticle.Text3" class="form-control" />
+                <span asp-validation-for="CreateLearnArticleViewModel.LearnArticle.Text3" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-5">
+                <label asp-for="CreateLearnArticleViewModel.Image3" class="control-label">Image 3</label>
+                <input type="file" asp-for="CreateLearnArticleViewModel.Image3" class="form-control" />
+                <span asp-validation-for="CreateLearnArticleViewModel.Image3" class="text-danger"></span>
+            </div>
+
+            <!-- Instruction 4 -->
+            <div class="form-group mt-5">
+                <label asp-for="CreateLearnArticleViewModel.LearnArticle.Heading4" class="control-label"></label>
+                <input asp-for="CreateLearnArticleViewModel.LearnArticle.Heading4" class="form-control" />
+                <span asp-validation-for="CreateLearnArticleViewModel.LearnArticle.Heading4" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CreateLearnArticleViewModel.LearnArticle.Text4" class="control-label"></label>
+                <input asp-for="CreateLearnArticleViewModel.LearnArticle.Text4" class="form-control" />
+                <span asp-validation-for="CreateLearnArticleViewModel.LearnArticle.Text4" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-5">
+                <label asp-for="CreateLearnArticleViewModel.Image4" class="control-label">Image 4</label>
+                <input type="file" asp-for="CreateLearnArticleViewModel.Image4" class="form-control" />
+                <span asp-validation-for="CreateLearnArticleViewModel.Image4" class="text-danger"></span>
+            </div>
+
+            <!-- Instruction 5 -->
+            <div class="form-group mt-5">
+                <label asp-for="CreateLearnArticleViewModel.LearnArticle.Heading5" class="control-label"></label>
+                <input asp-for="CreateLearnArticleViewModel.LearnArticle.Heading5" class="form-control" />
+                <span asp-validation-for="CreateLearnArticleViewModel.LearnArticle.Heading5" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CreateLearnArticleViewModel.LearnArticle.Text5" class="control-label"></label>
+                <input asp-for="CreateLearnArticleViewModel.LearnArticle.Text5" class="form-control" />
+                <span asp-validation-for="CreateLearnArticleViewModel.LearnArticle.Text5" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-5">
+                <label asp-for="CreateLearnArticleViewModel.Image5" class="control-label">Image 5</label>
+                <input type="file" asp-for="CreateLearnArticleViewModel.Image5" class="form-control" />
+                <span asp-validation-for="CreateLearnArticleViewModel.Image5" class="text-danger"></span>
+            </div>
+
+            <!-- URL -->
+            <div class="form-group my-5">
+                <label asp-for="CreateLearnArticleViewModel.LearnArticle.Url" class="control-label"></label>
+                <input asp-for="CreateLearnArticleViewModel.LearnArticle.Url" class="form-control" />
+                <span asp-validation-for="CreateLearnArticleViewModel.LearnArticle.Url" class="text-danger"></span>
+            </div>
+
+            <!-- ICON -->
+            <div class="form-group my-5">
+                <label asp-for="CreateLearnArticleViewModel.LearnArticle.Icon" class="control-label">Icon (fas fa-list, fas fa-film, fas fa-question-circle)</label>
+                <input asp-for="CreateLearnArticleViewModel.LearnArticle.Icon" class="form-control" />
+                <span asp-validation-for="CreateLearnArticleViewModel.LearnArticle.Icon" class="text-danger"></span>
+            </div>
+
+            <!-- Desktop Checkbox -->
+            <div class="form-group form-check my-5">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="CreateLearnArticleViewModel.LearnArticle.Desktop" />
+                    @Html.DisplayNameFor(model => model.CreateLearnArticleViewModel.LearnArticle.Desktop)
+                </label>
+            </div>
+
+            <!-- Web Checkbox -->
+            <div class="form-group form-check my-5">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="CreateLearnArticleViewModel.LearnArticle.Web" />
+                    @Html.DisplayNameFor(model => model.CreateLearnArticleViewModel.LearnArticle.Web)
+                </label>
+            </div>
+           
+            <!-- Tag List Dropdown -->
+            <div class="form-group my-5">
+                <label asp-for="CreateLearnArticleViewModel.LearnArticle.LearnTagId" class="control-label"></label>
+                <select asp-for="CreateLearnArticleViewModel.LearnArticle.LearnTagId" class="form-control"
+                        asp-items="@(Model.CreateLearnArticleViewModel.TagList)">
+                    <option value="">Select a Tag</option>
+                </select>
+                <span asp-validation-for="CreateLearnArticleViewModel.LearnArticle.LearnTagId" class="text-danger"></span>
+            </div>
+            }
+            <div class="form-group mt-5">
+                <input type="submit" value="Spara" class="btn btn-lg btn-dark btn-block mx-auto mb-2 swe" />
+                <input type="submit" value="Create" class="btn btn-lg btn-dark btn-block mx-auto mb-2 eng" />
+            </div>
+        </form>
+
+        <a asp-page="./Index" class="btn btn-lg btn-dark mx-auto mb-2 text-light swe" style="max-width:150px; background-color:#394360;">Tillbaka</a>
+        <a asp-page="./Index" class="btn btn-lg btn-dark mx-auto mb-2 eng" style="max-width:150px;">Back</a>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

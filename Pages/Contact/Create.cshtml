@@ -1,0 +1,81 @@
+﻿@page
+@model Salto.Pages.Contact.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="menugroup text-center row">
+    <div class="col-3 col-md-2 d-flex center">
+        <a href="javascript:void(0);" onclick="goBack()"><span class=""><i class="fas fa-arrow-circle-left fa-3x alightgold my-auto"></i></span></a>
+    </div>
+    <div class="col-6 col-md-8">
+        <h1 class="swe">Kontakt</h1>
+        <h1 class="eng">Contact</h1>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Contact.FirstName" class="control-label"></label>
+                <input asp-for="Contact.FirstName" class="form-control" />
+                <span asp-validation-for="Contact.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-5">
+                <label asp-for="Contact.LastName" class="control-label"></label>
+                <input asp-for="Contact.LastName" class="form-control" />
+                <span asp-validation-for="Contact.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group my-5">
+                <label asp-for="Contact.Organization" class="control-label"></label>
+                <input asp-for="Contact.Organization" class="form-control" />
+                <span asp-validation-for="Contact.Organization" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-5">
+                <label asp-for="Contact.Email" class="control-label"></label>
+                <input asp-for="Contact.Email" class="form-control" />
+                <span asp-validation-for="Contact.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-5">
+                <label asp-for="Contact.Phone" class="control-label"></label>
+                <input asp-for="Contact.Phone" class="form-control" />
+                <span asp-validation-for="Contact.Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group my-5">
+                <label asp-for="Contact.Message" class="control-label"></label>
+                <input asp-for="Contact.Message" class="form-control" />
+                <span asp-validation-for="Contact.Message" class="text-danger"></span>
+            </div>
+            <div class="form-group my-5">
+                <label asp-for="Contact.VersionDemoMeeting" class="control-label"></label>
+                <select asp-for="Contact.VersionDemoMeeting" class="form-control" id="Contact_VersionDemoMeeting">
+                    @foreach (var value in Enum.GetValues(typeof(Salto.Models.Contact.Order)))
+                    {
+                        <option value="@value">@value</option>
+                    }
+                </select>
+                <span asp-validation-for="Contact.VersionDemoMeeting" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-5 swe">
+                <input type="submit" value="Skicka" class="btn btn-lg btn-dark mx-auto mb-2 text-light swe"/>
+            </div>
+            <div class="form-group mt-5 eng">
+                <input type="submit" value="Send" class="btn btn-lg btn-dark mx-auto mb-2 text-light eng" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <div class="col-3 col-md-2 d-flex center">
+        <a href="javascript:void(0);" onclick="goBack()"><span class=""><i class="fas fa-arrow-circle-left fa-3x alightgold my-auto"></i></span></a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

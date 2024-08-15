@@ -1,0 +1,155 @@
+﻿@page
+@model Salto.Pages.Prices.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-center menugroup mx-0 mb-3">
+    <div class="row">
+        <div class="col-3 col-md-2 d-flex center">
+            <a href="javascript:void(0);" onclick="goBack()"><span class=""><i class="fas fa-arrow-circle-left fa-3x aturq my-auto"></i></span></a>
+        </div>
+        <div class="col-6 col-md-8">
+            <h2 class="mt-3 swe">Välj ditt abonnemang</h2>
+            <h2 class="mt-3 eng">Pick a Plan</h2>
+            <div class= "swe">Jämför vilka funktioner som ingår i våra olika prenumerationer eller prata med oss om er verksamhets unika behov.</div>
+            <div class= "eng">Compare functions... </div>
+        </div>
+        <div class="col-3 col-md-2 d-flex center">
+            <a asp-page="Create" class="btn btn-lg btn-dark btn-block mx-auto mb-2 swe">Skapa ny</a>
+            <a asp-page="Create" class="btn btn-lg btn-dark btn-block mx-auto mb-2 eng">Create New</a>
+        </div>
+    </div>
+</div>
+
+<div class="text-center menugroup mx-0 bg-lightGreyBlue">
+        <div class="row mp-0">
+
+            @foreach (var item in Model.Prices)
+            {
+                <!-- Card -->
+                <div class="col-12 col-md-6 col-lg-3 moveupanimationdiv">
+                    <div class="menugroup container-fluid">
+                        <div class="mp-0">
+                            <h3 class="font-weight-bold adarkblue swe"> @Html.DisplayFor(modelItem => item.PricesNameSWE)</h3>
+                            <h3 class="font-weight-bold adarkblue eng"> @Html.DisplayFor(modelItem => item.PricesNameENG)</h3>
+                        
+                            <div class="row">
+                                <div class="col-6 mx-auto">
+
+                                @if (Model.CleanedPointsSWE != null && Model.CleanedPointsSWE.Length > 0)
+                                {
+                                   <ul class="custom-text-left swe">
+                                        <!-- Iterate through the PointsSWE and create list items -->
+                                        @foreach (var point in Model.CleanedPointsSWE)
+                                        {
+                                                        <li class="font-weight-bold adarkblue mb-2">@point</li>
+                                        }
+                                    </ul>
+                                }
+                                @if (Model.CleanedPointsENG != null && Model.CleanedPointsENG.Length > 0)
+                                {
+                                    <ul class="custom-text-left eng">
+                                        <!-- Iterate through the PointsENG and create list items -->
+                                        @foreach (var point in Model.CleanedPointsENG)
+                                        {
+                                            <li>@point</li>
+                                        }
+                                    </ul>
+                                }
+                                </div>
+                            </div>
+                        </div>
+
+                    <h1 class="font-weight-bold adarkblue"> @Html.DisplayFor(modelItem => item.Price)kr</h1>
+                    <p class="font-weight-bold swe">PER ANVÄNDARE & MÅNAD</p>
+                    <p class="font-weight-bold eng">USER/MONTH</p>
+                    <p class="my-0 font-italic swe"> @Html.DisplayFor(modelItem => item.QuitRuleSWE)</p>
+                    <p class="my-0 font-italic eng"> @Html.DisplayFor(modelItem => item.QuitRuleENG)</p>
+                    <br />
+
+                        @if (item.ButtonBuyNow)
+                        {
+                        <div><a asp-page="/Contact/Create" class="btn btn-lg btn-dark-hollow btn-block mx-auto mb-2 btn-buynow swe">Köp nu</a></div>
+                        <div><a asp-page="/Contact/Create" class="btn btn-lg btn-dark-hollow btn-block mx-auto mb-2 btn-buynow eng">Buy Now</a></div>
+                        }
+
+                        @if (item.ButtonTestForFree)
+                        {
+                            <div><a asp-page="/Contact/Create" class="btn btn-lg btn-dark-hollow btn-block mx-auto mb-2 btn-freetrial swe">Testa Gratis</a></div>
+                            <div><a asp-page="/Contact/Create" class="btn btn-lg btn-dark-hollow btn-block mx-auto mb-2 btn-freetrial eng">FREE TRIAL</a></div>
+                        }
+
+                        @if (item.ButtonContactUs)
+                        {
+                             <div><a asp-page="/Contact/Create" class="btn btn-lg btn-dark-hollow btn-block mx-auto mb-2 btn-contactUs swe">Kontakta oss</a></div>
+                        <div><a asp-page="/Contact/Create" class="btn btn-lg btn-dark-hollow btn-block mx-auto mb-2 btn-contactUs eng">Contact Us</a></div>
+                        }
+                
+                </div>
+                    <div class="menugroup container-fluid functionDescriptionDiv text-white pricesDarkBackground">
+                    <h3 class="swe text-light">Populära funktioner</h3>
+                    <h3 class="eng text-light">Popular Functions</h3>
+
+                   @*Foreach description *@
+                        @if (Model.CleanedDescriptionsSWE != null && Model.CleanedDescriptionsSWE.Length > 0)
+                        {
+                            <div class="mb-5 swe row d-flex">
+
+                                <!-- Iterate through the DescriptionsSWE and create one row of each -->
+                                @foreach (var point in Model.CleanedDescriptionsSWE)
+                                {
+                                    <div class="col-2 text-light custom-text-right mb-2 swe">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="col-10 custom-text-left mb-2 swe">
+                                        <small>@point</small>
+                                    </div>
+                                }
+                            </div>
+                        }
+
+                        @if (Model.CleanedDescriptionsENG != null && Model.CleanedDescriptionsENG.Length > 0)
+                        {
+                            <div class="mb-2 eng row d-flex">
+
+                                <!-- Iterate through the DescriptionsENG and create one row of each -->
+                                @foreach (var point in Model.CleanedDescriptionsENG)
+                                {
+                                    <div class="col-2 agreen custom-text-right mp-0 eng">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="col-10 custom-text-left mb-2 eng">
+                                        <small>@point</small>
+                                    </div>
+                                }
+                            </div>
+                        }
+                </div>
+             @*    Admin box *@
+                @if (User.IsInRole("twAdmin"))
+                {
+
+                    <div class="menugroup container-fluid editPricesButtonsBox">
+                        <div class="mb-3">
+                        <i class="fas fa-cog text-light fa-2xl"></i>
+                        <span class="text-light">ADMIN</span>
+                    </div>
+                   
+  
+                    
+                    <div><a asp-page="./Edit" asp-route-id="@item.PricesID"  class="btn btn-lg btn-dark-hollow btn-block mx-auto mb-2 text-light">Edit</a></div>
+                    <div><a asp-page="./Details" asp-route-id="@item.PricesID" class="btn btn-lg btn-dark-hollow btn-block mx-auto mb-2 text-light">Details</a></div>
+                    <div><a asp-page="./Delete" asp-route-id="@item.PricesID" class="btn btn-lg btn-dark-hollow btn-block mx-auto mb-2 text-light">Delete</a></div>
+                </div>
+                }
+
+            </div>
+           
+        
+          }
+        </div>
+    </div>
+
+</div>

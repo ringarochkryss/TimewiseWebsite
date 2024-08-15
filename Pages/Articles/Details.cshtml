@@ -1,0 +1,48 @@
+﻿@page
+@model Salto.Pages.Articles.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="text-center menugroup mx-0 mb-3 row">
+
+    <div class="col-3 col-md-2 d-flex">
+        <a href="javascript:void(0);" onclick="goBack()"><span class=""><i class="fas fa-arrow-circle-left fa-3x aturq my-auto"></i></span></a>
+    </div>
+    <div class="text-center col-6 col-md-8">
+        <h1 class="swe">@Html.DisplayFor(model => model.Article.ArticleTitleSWE)</h1>
+        <h1 class="eng">@Html.DisplayFor(model => model.Article.ArticleTitleSWE)</h1>
+        <small>@Html.DisplayFor(model => model.Article.Date)</small>
+    </div>
+    <div class="col-3 col-md-2 text-right">
+        <div class="swe"><span class="badge rounded-pill pricesDarkBackground d-inline swe" width="80">@Html.DisplayFor(model => model.Article.Tag.TagNameSWE)</span></div>
+        <div class="eng"><span class="badge rounded-pill pricesDarkBackground d-inline eng" width="80">@Html.DisplayFor(model => model.Article.Tag.TagNameENG)</span></div>
+    </div>
+    <hr />
+
+    <div class="row text-left mt-3 mb-1">
+        <div class="col-md-8 col-xl-6 mx-auto">
+            <p class="swe"> @Html.DisplayFor(model => model.Article.ArticleContentSWE)</p>
+            <p class="eng"> @Html.DisplayFor(model => model.Article.ArticleContentENG)</p>
+            </div>
+        <br />
+    </div>
+        <div class="text-center mt-5">
+        @if (Model.Article.Image != null && !string.IsNullOrEmpty(Model.Article.ImageMimeType))
+        {
+            <img src="data:@Model.Article.ImageMimeType;base64,@Convert.ToBase64String(Model.Article.Image)"  alt="Article Image" />
+        }
+        else
+        {
+            <img src="~/Images/twicon_darkblue.png" alt="Timewise Image" />
+        }
+        </div>
+</div>
+  
+
+
+<div class="container">
+    <div class="col-3 col-md-2 d-flex center">
+        <a href="javascript:void(0);" onclick="goBack()"><span class=""><i class="fas fa-arrow-circle-left fa-3x alightgrey my-auto"></i></span></a>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+﻿@page
+@model Salto.Pages.Contact.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="menugroup text-center">
+    <h1 class="swe">Contact</h1>
+    <h1 class="eng">Kontakt</h1>
+    <h4 class="swe">Admin</h4>
+    <h4 class="eng">Admin</h4>
+</div>
+<hr />
+
+<p>
+    <a class="swe" asp-page="Create">Skapa Ny</a>
+    <a class="eng" asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].Organization)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].Message)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].VersionDemoMeeting)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Contact) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Organization)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VersionDemoMeeting)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ContactID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ContactID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ContactID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

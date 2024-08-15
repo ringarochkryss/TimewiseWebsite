@@ -1,0 +1,14 @@
+﻿@page
+@model Salto.Pages.RoleUserAdmin.DeleteRoleModel
+
+@{
+    ViewData["Title"] = "Delete Role";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <p>Are you sure you want to delete the role '@Model.Role.Name'?</p>
+    <button class="btn btn-dark btn-dark-hollow my-3" type="submit" class="btn btn-danger">Delete</button>
+    <a asp-page="./Index" class="btn btn-secondary">Cancel</a>
+</form>

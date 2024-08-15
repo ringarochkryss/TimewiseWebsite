@@ -1,0 +1,176 @@
+﻿@page
+@using Microsoft.IdentityModel.Tokens
+@model Salto.Pages.Learn.IndexModel
+
+@* @{
+    ViewData["Title"] = "Index";
+} *@
+
+<div class="text-center menugroup mx-0 mb-3">
+    <div class="row">
+        <div class="col-3 col-md-2 d-flex center">
+            <a href="javascript:void(0);" onclick="goBack()"><span class=""><i class="fas fa-arrow-circle-left fa-3x aturq my-auto"></i></span></a>
+        </div>
+        <div class="col-6 col-md-8">
+            <h1 class="">Timewise Learn</h1>
+            <h4 class="">Plan the Future</h4>
+        </div>
+        <div class="col-3 col-md-2 d-flex center">
+            <a asp-page="Create" class="btn btn-lg btn-dark btn-block mx-auto mb-2 swe">Önska</a>
+            <a asp-page="Create" class="btn btn-lg btn-dark btn-block mx-auto mb-2 eng">Ask for Instruction</a>
+
+        </div>
+    </div>
+</div>
+
+ <div class="text-center menugroup mx-0 mb-5 row">
+
+@foreach (var item in Model.LearnArticle.GroupBy(x => x.LearnTag))
+{
+    <div class="col-md-6 col-lg-4">
+        <div class="card m-3 mb-5">
+        <div class="card-header mt-3">
+            <h5>@Html.DisplayFor(modelItem => item.Key.Name)</h5>
+            @* <p>Sort Order: @Html.DisplayFor(modelItem => item.Key.SortOrder)</p> *@
+        </div>
+        @foreach (var LearnArticle in item)
+        {
+           
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item p-2">
+                                <a asp-page="./Details" asp-route-id="@LearnArticle.Id" class="">
+                            <i class="@Html.DisplayFor(modelItem => LearnArticle.Icon) fa fa-x2 alightgold"></i>
+                            @Html.DisplayFor(modelItem => LearnArticle.Name)
+                        </a> 
+                    </li>
+                </ul>
+        }
+       </div>   
+    </div>     
+}
+</div>  
+
+
+@* Admin *@
+  @if (User.IsInRole("twAdmin")) 
+                    { 
+
+<div class="text-center menugroup mx-0 mb-3">
+    <div class="row">
+        <div class="col-3 col-md-2 d-flex center">
+            <a href="javascript:void(0);" onclick="goBack()"><span class=""><i class="fas fa-arrow-circle-left fa-3x aturq my-auto"></i></span></a>
+        </div>
+        <div class="col-6 col-md-8">
+            <h1 class="">Admin</h1>
+        </div>
+        <div class="col-3 col-md-2 d-flex center">
+            <a asp-page="Create" class="btn btn-lg btn-dark btn-block mx-auto mb-2 swe">Skapa Ny</a>
+            <a asp-page="Create" class="btn btn-lg btn-dark btn-block mx-auto mb-2 eng">Create</a>
+
+        </div>
+    </div>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LearnArticle[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LearnArticle[0].Url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LearnArticle[0].Icon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LearnArticle[0].Desktop)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LearnArticle[0].Web)
+            </th>
+            <th>
+                Step 1
+            </th>
+            <th>
+                Step 2
+            </th>
+            <th>
+                Step 3
+            </th>
+            <th>
+                Step 4
+            </th>
+            <th>
+                Step 5
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.LearnArticle)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a href="@Html.DisplayFor(modelItem => item.Url)" target="_blank"><i class="fas fa-up-right-from-square editpricesDarkColor"></i></a>
+                    
+                </td>
+                <td>
+                    <i class="@Html.DisplayFor(modelItem => item.Icon) fa-2x editpricesDarkColor"></i>
+                    
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Desktop)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Web)
+                </td>
+                <td>
+                    <div class="mp-0">@Html.DisplayFor(modelItem => item.Heading1)</div>
+                    @if (item.Image1 != null)
+                    {
+                        <img src="data:image;base64,@System.Convert.ToBase64String(item.Image1)" width="80" height="80" alt="InstructionImage" />
+                    }
+                </td>
+                <td>
+                    <div class="mp-0">@Html.DisplayFor(modelItem => item.Heading2)</div>
+                    @if (item.Image2 != null)
+                    {
+                        <img src="data:image;base64,@System.Convert.ToBase64String(item.Image2)" width="80" height="80" alt="InstructionImage" />
+                    }
+                </td>
+                <td>
+                    <div class="mp-0">@Html.DisplayFor(modelItem => item.Heading3)</div>
+                    @if (item.Image3 != null)
+                    {
+                        <img src="data:image;base64,@System.Convert.ToBase64String(item.Image3)" width="80" height="80" alt="InstructionImage" />
+                    }
+                </td>
+                <td>
+                    <div class="mp-0">@Html.DisplayFor(modelItem => item.Heading4)</div>
+                    @if (item.Image4 != null)
+                    {
+                        <img src="data:image;base64,@System.Convert.ToBase64String(item.Image4)" width="80" height="80" alt="InstructionImage" />
+                    }
+                </td>
+                <td>
+                    <div class="mp-0">@Html.DisplayFor(modelItem => item.Heading5)</div>
+                    @if (item.Image5 != null)
+                    {
+                        <img src="data:image;base64,@System.Convert.ToBase64String(item.Image5)" width="80" height="80" alt="InstructionImage" />
+                    }
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id" class="">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id" class="">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id" class="">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}

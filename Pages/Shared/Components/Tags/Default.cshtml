@@ -1,0 +1,13 @@
+﻿@model List<Salto.Models.Tag>
+
+@foreach (var tag in Model)
+{
+    <li class="center d-flex mx-3">
+        <a class="nav-link text-dark text-center round-button" asp-area="" asp-page="/TagArticles/Index" asp-route-tagId="@tag.TagID">
+            <div class="text-center mb-3 p-1"><i class="@tag.IconClass menuiconcolorOne fa-xl"></i></div>
+            <small class="smallxs swe mt-1">@tag.TagNameSWE</small>
+            <small class="smallxs eng mt-1">@tag.TagNameENG</small>
+        </a>
+    </li>
+}
+

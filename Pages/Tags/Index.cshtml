@@ -1,0 +1,65 @@
+﻿@page
+@model Salto.Pages.Tags.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-center menugroup mx-0 mb-3">
+<div class="row">
+    <div class="col-3 col-md-2 d-flex center">
+        <a href="javascript:void(0);" onclick="goBack()"><span class=""><i class="fas fa-arrow-circle-left fa-3x aturq my-auto"></i></span></a>
+    </div>
+    <div class="col-6 col-md-8">
+        <h1 class="swe">Taggar</h1>
+        <h1 class="eng">Tags</h1>
+    </div>
+    <div class="col-3 col-md-2 d-flex center">
+        <a asp-page="Create" class="btn btn-lg btn-dark btn-block mx-auto mb-2 swe">Skapa ny</a>
+        <a asp-page="Create" class="btn btn-lg btn-dark btn-block mx-auto mb-2 eng">Create New</a>
+    </div>
+</div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tag[0].TagNameSWE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tag[0].TagNameENG)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tag[0].IconClass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tag[0].Archived)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Tag) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TagNameSWE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TagNameENG)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IconClass)
+                    <i class="@Html.DisplayFor(modelItem => item.IconClass)"></i>
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Archived)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.TagID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.TagID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.TagID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

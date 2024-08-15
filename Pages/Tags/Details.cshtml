@@ -1,0 +1,59 @@
+﻿@page
+@model Salto.Pages.Tags.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="text-center menugroup mx-0 mb-3">
+    <div class="row">
+        <div class="col-3 col-md-2 d-flex center">
+            <a href="javascript:void(0);" onclick="goBack()"><span class=""><i class="fas fa-arrow-circle-left fa-3x aturq my-auto"></i></span></a>
+        </div>
+        <div class="col-6 col-md-8">
+            <h1 class="swe">DETALJER</h1>
+            <h1 class="eng">DETAILS</h1>
+        </div>
+        <div class="col-3 col-md-2 d-flex center">
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6 mx-auto">
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tag.TagNameSWE)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tag.TagNameSWE)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tag.TagNameENG)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tag.TagNameENG)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tag.IconClass)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tag.IconClass)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tag.Archived)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tag.Archived)
+        </dd>
+    </dl>
+</div>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Tag?.TagID" class="btn btn-lg btn-dark btn-block mx-auto mb-2 swe" style="max-width:150px;">Redigera</a>
+    <a asp-page="./Edit" asp-route-id="@Model.Tag?.TagID" class="btn btn-lg btn-dark btn-block mx-auto mb-2 eng" style="max-width:150px;">Edit</a>
+    <a asp-page="./Index" class="btn btn-lg btn-dark mx-auto mb-2 text-light swe" style="max-width:150px; background-color:#394360;">Tillbaka</a>
+    <a asp-page="./Index" class="btn btn-lg btn-dark mx-auto mb-2 eng" style="max-width:150px;">Back</a>
+</div>

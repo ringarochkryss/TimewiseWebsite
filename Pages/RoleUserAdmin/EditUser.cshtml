@@ -1,0 +1,48 @@
+﻿@page "{userId?}"
+@model Salto.Pages.RoleUserAdmin.EditUserModel
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Input.UserId" />
+    <div class="form-group">
+        <label asp-for="Input.UserName" class="control-label"></label>
+        <input asp-for="Input.UserName" class="form-control" />
+        <span asp-validation-for="Input.UserName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.Email" class="control-label"></label>
+        <input asp-for="Input.Email" class="form-control" />
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.CurrentPassword" class="control-label"></label>
+        <input asp-for="Input.CurrentPassword" class="form-control" />
+        <span asp-validation-for="Input.CurrentPassword" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.NewPassword" class="control-label"></label>
+        <input asp-for="Input.NewPassword" class="form-control" />
+        <span asp-validation-for="Input.NewPassword" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.ConfirmNewPassword" class="control-label"></label>
+        <input asp-for="Input.ConfirmNewPassword" class="form-control" />
+        <span asp-validation-for="Input.ConfirmNewPassword" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SelectedRole" class="control-label">Role</label>
+        <select asp-for="SelectedRole" class="form-control" asp-items="Model.Roles"></select>
+        <span asp-validation-for="SelectedRole" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-dark-hollow mt-5">Save</button>
+    <a asp-page="./Index" class="btn btn-dark-hollow mt-5 mx-3">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
