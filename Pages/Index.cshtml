@@ -15,8 +15,8 @@
                 @* Admin Left *@
                 <div class="col-2 col-xl">
                    
-                    @if (User.IsInRole("twAdmin")) 
-                    { 
+                   @*  @if (User.IsInRole("twAdmin")) 
+                    {  *@
 
                         <nav class="navbar navbar-dark text-center">
                             <ul class="navbar-nav mx-auto my-auto">
@@ -34,16 +34,19 @@
                                 </li>
                             </ul>
                         </nav>
-                     }  
+                     @* } *@  
 
                 </div>
               @*   Hero Content *@
                 <div class="col-8 col-xl-10">
                  @*    Take control of your productions and teams *@
-                    <h1 class="mt-5">Planning software for teams, <br /> productions and performing arts</h1>
+                    <h1 class="mt-5 swe">Planeringsverktyg för team, <br /> produktioner och scenkonst</h1>
+                    <h1 class="mt-5 eng">Planning software for teams, <br />  productions and performing arts</h1>
                   @*   A planning software for effortless management *@
-                    <h4 class="my-5 font-style-italic">Coordinate everybody everywhere with Timewise</h4>
-                    <a asp-page="/Contact/Create" class="btn btn-lg btn-dark btn-dark-hollow mb-5">Get Started</a>
+                    <h4 class="my-5 font-style-italic swe">Koordinera alla, överallt, med Timewise</h4>
+                    <h4 class="my-5 font-style-italic eng">Coordinate everybody everywhere with Timewise</h4>
+                    <a asp-page="/Contact/Create" class="btn btn-lg btn-dark btn-dark-hollow mb-5 swe">Kom igång</a>
+                    <a asp-page="/Contact/Create" class="btn btn-lg btn-dark btn-dark-hollow mb-5 eng">Get Started</a>
                 </div>
                
                 @* Admin Right *@
@@ -55,15 +58,32 @@
                         <nav class="navbar navbar-dark text-center">
                             <ul class="navbar-nav mx-auto my-auto">
                                 <li class="center d-flex mx-3">
-                                    <a class="nav-link text-dark" asp-area="" asp-page="/RoleUserAdmin/Index"><div class="text-center"><i class="fas fa-user editpricesDarkColor"></i></div><small class="smallxs swe">Anv. & Roller</small><small class="smallxs eng">Users & Roles</small></a>
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/RoleUserAdmin/Index">
+                                        <div class="text-center">
+                                            <i class="fas fa-user editpricesDarkColor"></i>
+                                        </div>
+                                        <small class="smallxs swe">Anv. & Roller</small>
+                                        <small class="smallxs eng">Users & Roles</small>
+                                    </a>
                                 </li>
-                                     <li class="center d-flex mx-3">
-                                        <a class="nav-link text-dark" asp-area="" asp-page="/LearnArticles/Index"><div class="text-center"><i class="fas fa-person-chalkboard editpricesDarkColor"></i></div><small class="smallxs swe">Learn Artiklar</small><small class="smallxs eng">Learn Articles</small></a>
-                                    </li>
                                 <li class="center d-flex mx-3">
-                                    <a class="nav-link text-dark" asp-area="" asp-page="/LearnTags/Index"><div class="text-center"><i class="fas fa-tags editpricesDarkColor"></i></div><small class="smallxs swe">Learn Kategorier</small><small class="smallxs eng">Learn Categories</small></a>
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/LearnArticles/Index">
+                                        <div class="text-center">
+                                            <i class="fas fa-person-chalkboard editpricesDarkColor"></i>
+                                        </div>
+                                        <small class="smallxs swe">Learn Artiklar</small>
+                                        <small class="smallxs eng">Learn Articles</small>
+                                    </a>
                                 </li>
-                               
+                                <li class="center d-flex mx-3">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/LearnTags/Index">
+                                        <div class="text-center">
+                                            <i class="fas fa-tags editpricesDarkColor"></i>
+                                        </div>
+                                        <small class="smallxs swe">Learn Kategorier</small>
+                                        <small class="smallxs eng">Learn Categories</small>
+                                    </a>
+                                </li>
                             </ul>
                         </nav>
                     } 
@@ -122,14 +142,19 @@
                             <h5 class="card-title eng">Schedule, Timereporting, Attest</h5>
                         </div>
                         <ul class="list-group list-group-flush mb-3">
-                            <li class="list-group-item">Enkel export till ert Löneprogram!</li>
-                            <li class="list-group-item">Tidrapportera med ett klick!</li>
-                            <li class="list-group-item">...var du vill i mobilen!</li>
+                            <li class="list-group-item swe">Enkel export till ert Löneprogram!</li>
+                            <li class="list-group-item eng">Easy export to your payroll system!</li>
+
+                            <li class="list-group-item swe">Tidrapportera med ett klick!</li>
+                            <li class="list-group-item eng">Time reporting with a single click!</li>
+
+                            <li class="list-group-item swe">...var du vill i mobilen!</li>
+                            <li class="list-group-item eng">...wherever you are, on your mobile!</li>
                         </ul>
                     </div>
                 </div>
            
-                @* Producttions*@
+                @* Productions*@
                 <div class="col-md-4 p-4">
                     <div class="card">
                         <img class="card-img-top p-5 maximageheight" src="~/Images//production.jpg"  alt="Card image cap">
@@ -138,9 +163,14 @@
                             <h5 class="card-title eng">Timewise Production</h5>
                         </div>
                         <ul class="list-group list-group-flush mb-3">
-                            <li class="list-group-item">Planering</li>
-                            <li class="list-group-item">Bemanning</li>
-                            <li class="list-group-item">Rapporter, Repscheman, roll-listor</li>
+                            <li class="list-group-item swe">Planering</li>
+                            <li class="list-group-item eng">Planning</li>
+
+                            <li class="list-group-item swe">Bemanning</li>
+                            <li class="list-group-item eng">Staffing</li>
+
+                            <li class="list-group-item swe">Rapporter, Repscheman, roll-listor</li>
+                            <li class="list-group-item eng">Reports, rehearsal schedules, cast lists</li>
                         </ul>
                     </div>
                 </div>
@@ -153,8 +183,11 @@
             <article class="row mb-3 h-400">
                 <div class="col-md-6 text-center h-100 d-flex align-items-center">
                     <div>
-                        <h3 class="d-block mb-4">Complex Planning made Simple</h3>
-                        <h4 class="">Use Timewise to plan, manage, track and communicate.</h4>
+                        <h3 class="mb-4 swe">Gör komplex planering enkel</h3>
+                        <h3 class="mb-4 eng">Complex Planning made Simple</h3>
+
+                        <h4 class="swe">Använd Timewise för att planera, hantera, följa upp och kommunicera.</h4>
+                        <h4 class="eng">Use Timewise to plan, manage, track and communicate.</h4>
                     </div>
                 </div>
                 <div class="col-md-6 my-md-5 zoom">
@@ -167,9 +200,14 @@
         <div class="text-center container-fluid hero mt-2 bg-lightGreyBlue">
             <img class="h-300" src="~/Images/amIresponsivegreybg.png" alt="Timewise Responsive App" />
         </div>
-            <h1 class="mt-5">Experience Our Top Features Live</h1>
-            <h4 class="my-5">Book your one-on-one demo and discuss your use case with our experts.</h4>
-             <a asp-page="/Contact/Create" class="btn btn-lg btn-dark btn-dark-hollow mb-5">Book a Demo</a>
+        <h1 class="mt-5 swe">Upplev våra bästa funktioner live</h1>
+        <h1 class="mt-5 eng">Experience Our Top Features Live</h1>
+
+        <h4 class="my-5 swe">Boka en personlig demo och diskutera ditt användningsfall med våra experter.</h4>
+        <h4 class="my-5 eng">Book your one-on-one demo and discuss your use case with our experts.</h4>
+
+        <a asp-page="/Contact/Create" class="btn btn-lg btn-dark btn-dark-hollow mb-5 swe">Boka en demo</a>
+        <a asp-page="/Contact/Create" class="btn btn-lg btn-dark btn-dark-hollow mb-5 eng">Book a Demo</a>
     </section>
 </div>
 
