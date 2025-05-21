@@ -57,6 +57,11 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddScoped<ArticleRepository>(); // Register ArticleRepository as a scoped service
 
+var port = Environment.GetEnvironmentVariable("PORT");
+if (!string.IsNullOrEmpty(port))
+{
+    builder.WebHost.UseUrls($"http://*:{port}");
+}
 
 var app = builder.Build();
 
