@@ -1,1 +1,1 @@
-﻿web: dotnet <Salto>.dll
+﻿web: dotnet Salto.dll
