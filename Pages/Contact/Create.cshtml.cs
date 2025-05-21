@@ -46,7 +46,7 @@ namespace Salto.Pages.Contact
             // Send email notification
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress("Timewise Website", "TimewiseWebsite@gmail.com"));
-            message.To.Add(new MailboxAddress("Timewise", "support@timewise.se"));
+            message.To.Add(new MailboxAddress("Timewise", "supportTimewise@mellbrand.com"));
             message.Subject = "Message from Timewise Website";
 
             var body = $"Name: {Contact.FirstName} {Contact.LastName}<br>Organization: {Contact.Organization}<br>Email: {Contact.Email}<br>Phone: {Contact.Phone}<br>Message: {Contact.Message}<br>Order: {Contact.VersionDemoMeeting}";

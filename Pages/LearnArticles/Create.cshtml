@@ -139,14 +139,14 @@
 
             <!-- URL -->
             <div class="form-group my-5">
-                <label asp-for="CreateLearnArticleViewModel.LearnArticle.Url" class="control-label"></label>
+                <label asp-for="CreateLearnArticleViewModel.LearnArticle.Url" class="control-label">url (enbart för film)</label>
                 <input asp-for="CreateLearnArticleViewModel.LearnArticle.Url" class="form-control" />
                 <span asp-validation-for="CreateLearnArticleViewModel.LearnArticle.Url" class="text-danger"></span>
             </div>
 
             <!-- ICON -->
             <div class="form-group my-5">
-                <label asp-for="CreateLearnArticleViewModel.LearnArticle.Icon" class="control-label">Icon (fas fa-list, fas fa-film, fas fa-question-circle)</label>
+                <label asp-for="CreateLearnArticleViewModel.LearnArticle.Icon" class="control-label">Icon (fas fa-list-ol, fas fa-film, fas fa-question-circle)</label>
                 <input asp-for="CreateLearnArticleViewModel.LearnArticle.Icon" class="form-control" />
                 <span asp-validation-for="CreateLearnArticleViewModel.LearnArticle.Icon" class="text-danger"></span>
             </div>

@@ -63,13 +63,16 @@
                                         </a>
                                     </li>
                                 }
-                                <li class="center d-flex mx-3">
-                                    <a class="nav-link text-dark text-center round-button" asp-area="" asp-page="/Prices/Index">
-                                        <div class="text-center mb-3 p-1"><i class="fa-solid fa-magnifying-glass-chart menuiconcolorOne fa-xl"></i></div>
-                                        <small class="smallxs swe mt-1">Priser</small>
-                                        <small class="smallxs eng mt-1">Pricing</small>
-                                    </a>
-                                </li>
+                                @if (User.IsInRole("twAdmin"))
+                                {
+                                    <li class="center d-flex mx-3">
+                                        <a class="nav-link text-dark text-center round-button" asp-area="" asp-page="/Prices/Index">
+                                            <div class="text-center mb-3 p-1"><i class="fa-solid fa-magnifying-glass-chart menuiconcolorOne fa-xl"></i></div>
+                                            <small class="smallxs swe mt-1">Priser</small>
+                                            <small class="smallxs eng mt-1">Pricing</small>
+                                        </a>
+                                    </li>
+                                }
                                 <li class="center d-flex mx-3">
                                     <a class="nav-link text-dark text-center round-button" asp-area="" asp-page="/Contact/Create">
                                         <div class="text-center mb-3 p-1"><i class="fas fa-at menuiconcolorOne fa-xl"></i></div>

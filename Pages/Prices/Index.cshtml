@@ -16,10 +16,13 @@
             <div class= "swe">Jämför vilka funktioner som ingår i våra olika prenumerationer eller prata med oss om er verksamhets unika behov.</div>
             <div class= "eng">Compare functions... </div>
         </div>
+         @if (User.IsInRole("twAdmin")) 
+                    { 
         <div class="col-3 col-md-2 d-flex center">
             <a asp-page="Create" class="btn btn-lg btn-dark btn-block mx-auto mb-2 swe">Skapa ny</a>
             <a asp-page="Create" class="btn btn-lg btn-dark btn-block mx-auto mb-2 eng">Create New</a>
         </div>
+                    }
     </div>
 </div>
 
@@ -29,7 +32,7 @@
             @foreach (var item in Model.Prices)
             {
                 <!-- Card -->
-                <div class="col-12 col-md-6 col-lg-3 moveupanimationdiv">
+                <div class="col-12 col-md-6 col-lg-3 offset-lg-1 moveupanimationdiv">
                     <div class="menugroup container-fluid">
                         <div class="mp-0">
                             <h3 class="font-weight-bold adarkblue swe"> @Html.DisplayFor(modelItem => item.PricesNameSWE)</h3>
@@ -38,23 +41,21 @@
                             <div class="row">
                                 <div class="col-6 mx-auto">
 
-                                @if (Model.CleanedPointsSWE != null && Model.CleanedPointsSWE.Length > 0)
+                                @if (!string.IsNullOrEmpty(item.PointsSWE))
                                 {
-                                   <ul class="custom-text-left swe">
-                                        <!-- Iterate through the PointsSWE and create list items -->
-                                        @foreach (var point in Model.CleanedPointsSWE)
+                                    <ul class="custom-text-left swe">
+                                        @foreach (var point in item.PointsSWE.Split(',', StringSplitOptions.RemoveEmptyEntries))
                                         {
-                                                        <li class="font-weight-bold adarkblue mb-2">@point</li>
+                                            <li class="font-weight-bold adarkblue mb-2">@point.Trim()</li>
                                         }
                                     </ul>
                                 }
-                                @if (Model.CleanedPointsENG != null && Model.CleanedPointsENG.Length > 0)
+                                @if (!string.IsNullOrEmpty(item.PointsENG))
                                 {
                                     <ul class="custom-text-left eng">
-                                        <!-- Iterate through the PointsENG and create list items -->
-                                        @foreach (var point in Model.CleanedPointsENG)
+                                        @foreach (var point in item.PointsENG.Split(',', StringSplitOptions.RemoveEmptyEntries))
                                         {
-                                            <li>@point</li>
+                                            <li>@point.Trim()</li>
                                         }
                                     </ul>
                                 }
@@ -93,39 +94,34 @@
                     <h3 class="eng text-light">Popular Functions</h3>
 
                    @*Foreach description *@
-                        @if (Model.CleanedDescriptionsSWE != null && Model.CleanedDescriptionsSWE.Length > 0)
-                        {
-                            <div class="mb-5 swe row d-flex">
-
-                                <!-- Iterate through the DescriptionsSWE and create one row of each -->
-                                @foreach (var point in Model.CleanedDescriptionsSWE)
-                                {
-                                    <div class="col-2 text-light custom-text-right mb-2 swe">
-                                        <i class="fas fa-check"></i>
-                                    </div>
-                                    <div class="col-10 custom-text-left mb-2 swe">
-                                        <small>@point</small>
-                                    </div>
-                                }
-                            </div>
-                        }
-
-                        @if (Model.CleanedDescriptionsENG != null && Model.CleanedDescriptionsENG.Length > 0)
-                        {
-                            <div class="mb-2 eng row d-flex">
-
-                                <!-- Iterate through the DescriptionsENG and create one row of each -->
-                                @foreach (var point in Model.CleanedDescriptionsENG)
-                                {
-                                    <div class="col-2 agreen custom-text-right mp-0 eng">
-                                        <i class="fas fa-check"></i>
-                                    </div>
-                                    <div class="col-10 custom-text-left mb-2 eng">
-                                        <small>@point</small>
-                                    </div>
-                                }
-                            </div>
-                        }
+                    @if (!string.IsNullOrEmpty(item.DescriptionsSWE))
+                    {
+                        <div class="mb-5 swe row d-flex">
+                            @foreach (var point in item.DescriptionsSWE.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                            {
+                                <div class="col-2 text-light custom-text-right mb-2 swe">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="col-10 custom-text-left mb-2 swe">
+                                    <small>@point.Trim()</small>
+                                </div>
+                            }
+                        </div>
+                    }
+                    @if (!string.IsNullOrEmpty(item.DescriptionsENG))
+                    {
+                        <div class="mb-2 eng row d-flex">
+                            @foreach (var point in item.DescriptionsENG.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                            {
+                                <div class="col-2 agreen custom-text-right mp-0 eng">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="col-10 custom-text-left mb-2 eng">
+                                    <small>@point.Trim()</small>
+                                </div>
+                            }
+                        </div>
+                    }
                 </div>
              @*    Admin box *@
                 @if (User.IsInRole("twAdmin"))
