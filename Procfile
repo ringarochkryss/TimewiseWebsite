@@ -1,1 +1,1 @@
-﻿web: heroku_output/Salto.dll
+﻿web: dotnet heroku_output/Salto.dll
