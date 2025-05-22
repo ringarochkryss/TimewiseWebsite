@@ -7,11 +7,11 @@
     <UserSecretsId>aspnet-Salto-fc3bfefa-b79c-463c-975f-12fd347bd33f</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <Content Include=".env">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
     <PackageReference Include="DotEnv" Version="0.0.1.1" />
