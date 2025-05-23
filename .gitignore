@@ -364,3 +364,6 @@ FodyWeavers.xsd
 
 # Secrets
 .env
+
+#Heroku is self deployed so I have to git ignore this for it to deploy
+Salto.sln
