@@ -368,3 +368,12 @@ FodyWeavers.xsd
 #Heroku is self deployed so I have to git ignore this for it to deploy
 Salto.sln
 Salto.csproj
+
+# Ignorera allt
+/*
+
+# Behåll dessa två:
+!Heroku_output/
+!Heroku_output/**
+
+!Procfile
