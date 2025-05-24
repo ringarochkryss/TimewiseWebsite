@@ -28,7 +28,7 @@ namespace Salto.Pages.Prices
         public Salto.Models.Prices Prices { get; set; }
 
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD 123
         public async Task<IActionResult> OnPostAsync()
         {
           if (!ModelState.IsValid)

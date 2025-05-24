@@ -7,10 +7,6 @@
     <UserSecretsId>aspnet-Salto-fc3bfefa-b79c-463c-975f-12fd347bd33f</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Include="Dockerfile" />
-  </ItemGroup>
-
   <!--<ItemGroup>
     <Content Include=".env">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

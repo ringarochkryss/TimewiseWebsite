@@ -1,5 +1,5 @@
 ﻿# Build stage
-FROM mcr.microsoft.com / dotnet / sdk:7.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 
 WORKDIR /app
 
@@ -20,7 +20,7 @@ WORKDIR /app
 COPY --from=build /app/out ./
 
 # Sätt miljövariabel så appen lyssnar på rätt port (Heroku sätter $PORT)
-ENV ASPNETCORE_URLS=http://+:${PORT:-80}
+ENV ASPNETCORE_URLS=http://+:80
 
 # Starta appen
-ENTRYPOINT["dotnet", "Salto.dll"]
+ENTRYPOINT ["dotnet", "Salto.dll"]

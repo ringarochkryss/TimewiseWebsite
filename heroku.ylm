@@ -1,0 +1,7 @@
+﻿build:
+  docker:
+    web: Dockerfile
+
+run:
+  web: dotnet Salto.dll
+
